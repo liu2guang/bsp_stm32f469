@@ -15,6 +15,7 @@
 #define RT_TICK_PER_SECOND 1000
 #define RT_USING_OVERFLOW_CHECK
 #define RT_USING_HOOK
+#define RT_USING_IDLE_HOOK
 #define RT_IDEL_HOOK_LIST_SIZE 4
 #define IDLE_THREAD_STACK_SIZE 256
 #define RT_DEBUG
@@ -209,6 +210,8 @@
 
 /* system packages */
 
+#define PKG_USING_PIXMAN
+#define PKG_USING_PIXMAN_V0340
 
 /* peripheral libraries and drivers */
 
@@ -224,14 +227,17 @@
 /* example package: hello */
 
 
-/* rtpkgs online packages */
-
-
 /* Privated Packages of RealThread */
 
 
 /* Network Utilities */
 
+
+/* rtpkgs online packages */
+
+#define PKG_USING_LIBSTM32HAL
+#define PKG_USING_LIBSTM32HAL_V010
+#define LIBSTM32HAL_USING_STATIC_LIB
 #define SOC_STM32F469NI
 
 /* STM32 Bsp Config */
@@ -252,8 +258,6 @@
 
 /* Select spi bus drivers */
 
-#define BSP_USING_SPI2
-#define SPI_USING_DMA
 
 /* Select sdram drivers */
 
