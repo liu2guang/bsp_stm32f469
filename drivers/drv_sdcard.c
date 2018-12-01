@@ -13,7 +13,7 @@
  */ 
  
 #include "drv_sdcard.h"
-#include "stm32f4xx.h"
+#include "board.h"
 
 #define RT_SDCARD_DMA_MODE 0 
 
