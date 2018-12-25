@@ -14,9 +14,11 @@
 // <<< Use Configuration Wizard in Context Menu >>>
 #ifndef __BOARD_H__
 #define __BOARD_H__
+
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 #include <rtthread.h>
+
 #if \
     defined(SOC_STM32F410T8)||\
     defined(SOC_STM32F410TB)

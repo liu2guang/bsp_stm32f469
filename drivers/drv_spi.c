@@ -15,6 +15,7 @@
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <rthw.h>
+
 #ifdef RT_USING_SPI
 
 struct stm32_hw_spi_cs
