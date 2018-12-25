@@ -160,4 +160,13 @@ menu "Select ramdisk drivers"
         depends on BSP_USING_RAMDISK 
 endmenu
 
+menu "Select wifi drivers"
+    config BSP_USING_RW00X
+        bool "Using rw00x wifi driver" 
+        default n 
+        select RT_USING_LWIP
+        select BSP_USING_SPI2
+        select PKG_USING_RW007
+endmenu
+
 endmenu 

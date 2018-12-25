@@ -19,8 +19,13 @@
 #include <dfs_posix.h>
 #endif
 
-#ifdef RT_USING_SPI_WIFI
-#include <spi_wifi_rw009.h>
+#ifdef BSP_USING_RW00X
+#include <spi_wifi_rw007.h>
+#endif
+
+#ifdef PKG_USING_AUDIO
+#include "audio.h" 
+#include "audio_codec.h" 
 #endif
 
 int main(void)
@@ -70,14 +75,24 @@ int main(void)
     msh_exec(_cmd2, rt_strlen(_cmd2)); 	
 #endif
 
-#ifdef RT_USING_SPI_WIFI
+#ifdef BSP_USING_RW00X
+    #define _SSID     ((const char *)"rtthread-ap")
+    #define _PASSWORD ((const char *)"12345678910")
+
     extern void wifi_spi_device_init(const char * device_name);
     wifi_spi_device_init("wspi");
     rt_hw_wifi_init("wspi",MODE_STATION);
+		
+    rw007_join(_SSID, _PASSWORD); 
+#endif
+		
+#ifdef PKG_USING_AUDIO
+    rt_audio_codec_t codec = RT_NULL; 
+    
+    codec = rt_audio_codec_find("CS43L22"); 
+    rt_audio_codec_init(codec, "i2c2", 1, PIN_LOW); 
 #endif
 }
-
-
 
 #if defined(PKG_USING_PLAYER)
 static int _player_init(void)

@@ -19,6 +19,30 @@
 #include <stm32f4xx_hal.h>
 #include <rtthread.h>
 
+#define D0  (186)
+#define D1  (191)
+#define D2  (190)
+#define D3  ( 49)
+#define D4  (189)
+#define D5  ( 50)
+#define D6  ( 61)
+#define D7  (188)
+#define D8  (187)
+#define D9  ( 62)
+#define D10 (102)
+#define D11 (114)
+#define D12 (113)
+#define D13 (175)
+#define D14 (207)
+#define D15 (206)
+
+#define A0  ( 67)
+#define A1  ( 40)
+#define A2  ( 41)
+#define A3  ( 63)
+#define A4  ( 64)
+#define A5  ( 59)
+
 #if \
     defined(SOC_STM32F410T8)||\
     defined(SOC_STM32F410TB)

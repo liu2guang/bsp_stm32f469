@@ -39,8 +39,9 @@
 
 #define RT_USING_DEVICE
 #define RT_USING_CONSOLE
-#define RT_CONSOLEBUF_SIZE 128
+#define RT_CONSOLEBUF_SIZE 4096
 #define RT_CONSOLE_DEVICE_NAME "uart3"
+#define RT_VER_NUM 0x40000
 #define ARCH_ARM
 #define ARCH_ARM_CORTEX_M
 #define ARCH_ARM_CORTEX_M4
@@ -98,6 +99,7 @@
 #define RT_USING_DEVICE_IPC
 #define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
+#define RT_SERIAL_USING_DMA
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
@@ -108,7 +110,6 @@
 #define RT_MMCSD_THREAD_PREORITY 22
 #define RT_MMCSD_MAX_PARTITION 16
 #define RT_USING_SPI
-#define RT_USING_SPI_WIFI
 
 /* Using WiFi */
 
@@ -119,12 +120,20 @@
 /* POSIX layer and C standard library */
 
 #define RT_USING_LIBC
+#define RT_USING_PTHREADS
 #define RT_USING_POSIX
 
 /* Network */
 
 /* Socket abstraction layer */
 
+#define RT_USING_SAL
+
+/* protocol stack implement */
+
+#define SAL_USING_LWIP
+#define SAL_SOCKETS_NUM 16
+#define SAL_PROTO_FAMILIES_NUM 4
 
 /* light weight TCP/IP stack */
 
@@ -144,6 +153,7 @@
 #define RT_LWIP_MSKADDR "255.255.255.0"
 #define RT_LWIP_UDP
 #define RT_LWIP_TCP
+#define RT_LWIP_RAW
 #define RT_MEMP_NUM_NETCONN 8
 #define RT_LWIP_PBUF_NUM 16
 #define RT_LWIP_RAW_PCB_NUM 4
@@ -192,6 +202,13 @@
 
 /* Wiced WiFi */
 
+#define PKG_USING_NETUTILS
+#define PKG_NETUTILS_PING
+#define PKG_NETUTILS_IPERF
+#define PKG_NETUTILS_NTP
+#define NETUTILS_NTP_TIMEZONE 8
+#define NETUTILS_NTP_HOSTNAME "cn.ntp.org.cn"
+#define PKG_USING_NETUTILS_LATEST_VERSION
 
 /* IoT Cloud */
 
@@ -210,8 +227,6 @@
 
 /* system packages */
 
-#define PKG_USING_PIXMAN
-#define PKG_USING_PIXMAN_V0340
 
 /* peripheral libraries and drivers */
 
@@ -219,25 +234,8 @@
 /* miscellaneous packages */
 
 
-/* sample package */
-
 /* samples: kernel and components samples */
 
-
-/* example package: hello */
-
-
-/* Privated Packages of RealThread */
-
-
-/* Network Utilities */
-
-
-/* rtpkgs online packages */
-
-#define PKG_USING_LIBSTM32HAL
-#define PKG_USING_LIBSTM32HAL_V010
-#define LIBSTM32HAL_USING_STATIC_LIB
 #define SOC_STM32F469NI
 
 /* STM32 Bsp Config */
@@ -258,6 +256,8 @@
 
 /* Select spi bus drivers */
 
+#define BSP_USING_SPI2
+#define SPI_USING_DMA
 
 /* Select sdram drivers */
 
@@ -265,7 +265,6 @@
 
 /* Select audio drivers */
 
-#define BSP_USING_AUDIO
 
 /* Select sdcard drivers */
 
@@ -284,5 +283,16 @@
 #define BSP_USING_RAMDISK_SIZE 4
 #define BSP_USING_RAMDISK_MOUNT
 #define BSP_USING_RAMDISK_PATH_MOUNT "/mnt/tmp"
+
+/* Select wifi drivers */
+
+#define BSP_USING_RW00X
+
+#define PKG_USING_RW007
+#define PKG_USING_LIBSTM32HAL
+#define LIBSTM32HAL_USING_STATIC_LIB    
+#define PKG_USING_LIBRWS
+#define LIBRWS_USING_EXAMPLE
+#define MEMP_NUM_NETDB 2 
 
 #endif
