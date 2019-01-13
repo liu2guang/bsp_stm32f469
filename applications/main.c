@@ -23,9 +23,9 @@
 #include <spi_wifi_rw007.h>
 #endif
 
-#ifdef PKG_USING_AUDIO
+#ifdef PKG_USING_LUDIO
 #include "audio.h" 
-#include "audio_codec.h" 
+#include "audio_control.h"
 #endif
 
 int main(void)
@@ -76,9 +76,8 @@ int main(void)
 #endif
 
 #ifdef BSP_USING_RW00X
-    #define _SSID     ((const char *)"rtthread-ap")
-    #define _PASSWORD ((const char *)"12345678910")
-
+        #define _SSID     ((const char *)"rtthread-ap")
+        #define _PASSWORD ((const char *)"12345678910")
     extern void wifi_spi_device_init(const char * device_name);
     wifi_spi_device_init("wspi");
     rt_hw_wifi_init("wspi",MODE_STATION);
@@ -86,11 +85,12 @@ int main(void)
     rw007_join(_SSID, _PASSWORD); 
 #endif
 		
-#ifdef PKG_USING_AUDIO
-    rt_audio_codec_t codec = RT_NULL; 
+#ifdef PKG_USING_LUDIO
+    rt_audio_control_t control = RT_NULL; 
+    struct rt_audio_control_cfg cfg = {"i2c2", 1}; 
     
-    codec = rt_audio_codec_find("CS43L22"); 
-    rt_audio_codec_init(codec, "i2c2", 1, PIN_LOW); 
+    control = rt_audio_control_find("CS43L22"); 
+    rt_audio_control_load(control, &cfg); 
 #endif
 }
 
@@ -104,3 +104,10 @@ static int _player_init(void)
 }
 INIT_COMPONENT_EXPORT(_player_init); 
 #endif
+
+int reboot(void)
+{
+    NVIC_SystemReset(); 
+    return RT_EOK; 
+}
+MSH_CMD_EXPORT(reboot, reboot board.); 

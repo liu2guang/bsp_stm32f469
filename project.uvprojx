@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F469xx, RT_USING_ARM_LIBC</Define>
               <Undefine></Undefine>
-              <IncludePath>applications;.;drivers;Libraries\CMSIS\Device\ST\STM32F4xx\Include;Libraries\CMSIS\Include;packages\librws_tmall\librws\inc;packages\librws_tmall\examples;packages\libstm32hal-v0.1.0\libstm32hal\libstm32hal_f469_armcc;packages\netutils-latest\iperf;packages\netutils-latest\ntp;packages\netutils-latest\ping;packages\rw007;rt-thread\include;rt-thread\libcpu\arm\cortex-m4;rt-thread\libcpu\arm\common;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\dfs\filesystems\romfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\libc\pthreads;rt-thread\components\libc\time;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\socket\sys_socket</IncludePath>
+              <IncludePath>applications;.;drivers;Libraries\CMSIS\Device\ST\STM32F4xx\Include;Libraries\CMSIS\Include;packages\librws-v1.2.4\librws\inc;packages\librws-v1.2.4\examples;packages\libstm32hal-v0.1.0\libstm32hal\libstm32hal_f469_armcc;packages\mbedtls-v2.6.0\mbedtls\include;packages\mbedtls-v2.6.0\mbedtls\include\mbedtls;packages\mbedtls-v2.6.0\ports\inc;rt-thread\include;rt-thread\libcpu\arm\cortex-m4;rt-thread\libcpu\arm\common;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\dfs\filesystems\romfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\usb\usbdevice;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\libc\pthreads;rt-thread\components\libc\time;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -448,9 +448,9 @@
               <FilePath>drivers\drv_ramdisk.c</FilePath>
             </File>
             <File>
-              <FileName>drv_rw00x.c</FileName>
+              <FileName>drv_usbd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>drivers\drv_rw00x.c</FilePath>
+              <FilePath>drivers\drv_usbd.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -470,97 +470,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>librws_tmall</GroupName>
-          <Files>
-            <File>
-              <FileName>librws.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\librws.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_common.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_error.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_error.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_frame.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_frame.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_list.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_list.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_memory.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_memory.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_socketpriv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_socketpriv.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_socketpub.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_socketpub.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_string.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_string.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_thread.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\librws\src\rws_thread.c</FilePath>
-            </File>
-            <File>
-              <FileName>rws_example.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\librws_tmall\examples\rws_example.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>libstm32hal-v0.1.0</GroupName>
-          <Files>
-            <File>
-              <FileName>libstm32hal_f469_armcc.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>packages\libstm32hal-v0.1.0\libstm32hal\libstm32hal_f469_armcc\libstm32hal_f469_armcc.lib</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>NetUtils</GroupName>
-          <Files>
-            <File>
-              <FileName>iperf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\netutils-latest\iperf\iperf.c</FilePath>
-            </File>
-            <File>
-              <FileName>ntp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\netutils-latest\ntp\ntp.c</FilePath>
-            </File>
-            <File>
-              <FileName>ping.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>packages\netutils-latest\ping\ping.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>rw007</GroupName>
+          <GroupName>librws_rtthread</GroupName>
           <GroupOption>
             <CommonProperty>
               <UseCPPCompiler>0</UseCPPCompiler>
@@ -568,15 +478,15 @@
               <RVCTZI>0</RVCTZI>
               <RVCTOtherData>0</RVCTOtherData>
               <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>1</IncludeInBuild>
-              <AlwaysBuild>0</AlwaysBuild>
-              <GenerateAssemblyFile>0</GenerateAssemblyFile>
-              <AssembleAssemblyFile>0</AssembleAssemblyFile>
-              <PublicsOnly>0</PublicsOnly>
-              <StopOnExitCode>3</StopOnExitCode>
+              <IncludeInBuild>2</IncludeInBuild>
+              <AlwaysBuild>2</AlwaysBuild>
+              <GenerateAssemblyFile>2</GenerateAssemblyFile>
+              <AssembleAssemblyFile>2</AssembleAssemblyFile>
+              <PublicsOnly>2</PublicsOnly>
+              <StopOnExitCode>11</StopOnExitCode>
               <CustomArgument></CustomArgument>
               <IncludeLibraryModules></IncludeLibraryModules>
-              <ComprImg>0</ComprImg>
+              <ComprImg>1</ComprImg>
             </CommonProperty>
             <GroupArmAds>
               <Cads>
@@ -590,7 +500,7 @@
                 <PlainCh>2</PlainCh>
                 <Ropi>2</Ropi>
                 <Rwpi>2</Rwpi>
-                <wLevel>0</wLevel>
+                <wLevel>1</wLevel>
                 <uThumb>2</uThumb>
                 <uSurpInc>2</uSurpInc>
                 <uC99>2</uC99>
@@ -606,7 +516,7 @@
                 <VariousControls>
                   <MiscControls></MiscControls>
                   <Define></Define>
-                  <Undefine> </Undefine>
+                  <Undefine></Undefine>
                   <IncludePath></IncludePath>
                 </VariousControls>
               </Cads>
@@ -632,9 +542,449 @@
           </GroupOption>
           <Files>
             <File>
-              <FileName>spi_wifi_rw007.c</FileName>
+              <FileName>librws.c</FileName>
               <FileType>1</FileType>
-              <FilePath>packages\rw007\spi_wifi_rw007.c</FilePath>
+              <FilePath>packages\librws-v1.2.4\librws\src\librws.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_common.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_error.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_frame.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_frame.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_list.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_memory.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_memory.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_socketpriv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_socketpriv.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_socketpub.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_socketpub.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_string.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_string.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_thread.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\librws\src\rws_thread.c</FilePath>
+            </File>
+            <File>
+              <FileName>rws_example.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\librws-v1.2.4\examples\rws_example.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libstm32hal-v0.1.0</GroupName>
+          <Files>
+            <File>
+              <FileName>libstm32hal_f469_armcc.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>packages\libstm32hal-v0.1.0\libstm32hal\libstm32hal_f469_armcc\libstm32hal_f469_armcc.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mbedtls</GroupName>
+          <Files>
+            <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\aes.c</FilePath>
+            </File>
+            <File>
+              <FileName>aesni.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\aesni.c</FilePath>
+            </File>
+            <File>
+              <FileName>arc4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\arc4.c</FilePath>
+            </File>
+            <File>
+              <FileName>asn1parse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\asn1parse.c</FilePath>
+            </File>
+            <File>
+              <FileName>asn1write.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\asn1write.c</FilePath>
+            </File>
+            <File>
+              <FileName>base64.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\base64.c</FilePath>
+            </File>
+            <File>
+              <FileName>bignum.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\bignum.c</FilePath>
+            </File>
+            <File>
+              <FileName>blowfish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\blowfish.c</FilePath>
+            </File>
+            <File>
+              <FileName>camellia.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\camellia.c</FilePath>
+            </File>
+            <File>
+              <FileName>ccm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ccm.c</FilePath>
+            </File>
+            <File>
+              <FileName>certs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\certs.c</FilePath>
+            </File>
+            <File>
+              <FileName>cipher.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\cipher.c</FilePath>
+            </File>
+            <File>
+              <FileName>cipher_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\cipher_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\cmac.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctr_drbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ctr_drbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>des.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\des.c</FilePath>
+            </File>
+            <File>
+              <FileName>dhm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\dhm.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecdh.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ecdh.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecdsa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ecdsa.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecjpake.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ecjpake.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ecp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ecp_curves.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ecp_curves.c</FilePath>
+            </File>
+            <File>
+              <FileName>entropy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\entropy.c</FilePath>
+            </File>
+            <File>
+              <FileName>entropy_poll.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\entropy_poll.c</FilePath>
+            </File>
+            <File>
+              <FileName>error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\error.c</FilePath>
+            </File>
+            <File>
+              <FileName>gcm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\gcm.c</FilePath>
+            </File>
+            <File>
+              <FileName>havege.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\havege.c</FilePath>
+            </File>
+            <File>
+              <FileName>hmac_drbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\hmac_drbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>md.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\md.c</FilePath>
+            </File>
+            <File>
+              <FileName>md2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\md2.c</FilePath>
+            </File>
+            <File>
+              <FileName>md4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\md4.c</FilePath>
+            </File>
+            <File>
+              <FileName>md5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\md5.c</FilePath>
+            </File>
+            <File>
+              <FileName>md_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\md_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>memory_buffer_alloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\memory_buffer_alloc.c</FilePath>
+            </File>
+            <File>
+              <FileName>oid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\oid.c</FilePath>
+            </File>
+            <File>
+              <FileName>padlock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\padlock.c</FilePath>
+            </File>
+            <File>
+              <FileName>pem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pem.c</FilePath>
+            </File>
+            <File>
+              <FileName>pk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pk.c</FilePath>
+            </File>
+            <File>
+              <FileName>pk_wrap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pk_wrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pkcs11.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs12.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pkcs12.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkcs5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pkcs5.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkparse.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pkparse.c</FilePath>
+            </File>
+            <File>
+              <FileName>pkwrite.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\pkwrite.c</FilePath>
+            </File>
+            <File>
+              <FileName>platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>ripemd160.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ripemd160.c</FilePath>
+            </File>
+            <File>
+              <FileName>rsa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\rsa.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\sha1.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha256.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\sha256.c</FilePath>
+            </File>
+            <File>
+              <FileName>sha512.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\sha512.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cache.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_cache.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_ciphersuites.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_ciphersuites.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cli.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_cli.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_cookie.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_cookie.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_srv.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_ticket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_ticket.c</FilePath>
+            </File>
+            <File>
+              <FileName>ssl_tls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\ssl_tls.c</FilePath>
+            </File>
+            <File>
+              <FileName>threading.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\threading.c</FilePath>
+            </File>
+            <File>
+              <FileName>timing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>version.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\version.c</FilePath>
+            </File>
+            <File>
+              <FileName>version_features.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\version_features.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_create.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509_create.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_crl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509_crl.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_crt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509_crt.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509_csr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509_csr.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509write_crt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509write_crt.c</FilePath>
+            </File>
+            <File>
+              <FileName>x509write_csr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\x509write_csr.c</FilePath>
+            </File>
+            <File>
+              <FileName>xtea.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\mbedtls\library\xtea.c</FilePath>
+            </File>
+            <File>
+              <FileName>timing_alt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\ports\src\timing_alt.c</FilePath>
+            </File>
+            <File>
+              <FileName>tls_certificate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\ports\src\tls_certificate.c</FilePath>
+            </File>
+            <File>
+              <FileName>tls_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\ports\src\tls_client.c</FilePath>
+            </File>
+            <File>
+              <FileName>tls_hardware.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\ports\src\tls_hardware.c</FilePath>
+            </File>
+            <File>
+              <FileName>tls_net.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\mbedtls-v2.6.0\ports\src\tls_net.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -906,6 +1256,11 @@
               <FilePath>rt-thread\components\drivers\misc\pin.c</FilePath>
             </File>
             <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\rtc\rtc.c</FilePath>
+            </File>
+            <File>
               <FileName>block_dev.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\drivers\sdio\block_dev.c</FilePath>
@@ -979,6 +1334,26 @@
               <FileName>workqueue.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\drivers\src\workqueue.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>rt_usbd</GroupName>
+          <Files>
+            <File>
+              <FileName>core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\usb\usbdevice\core\core.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbdevice.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\usb\usbdevice\core\usbdevice.c</FilePath>
+            </File>
+            <File>
+              <FileName>rndis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\usb\usbdevice\class\rndis.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1329,6 +1704,21 @@
               <FileName>af_inet_lwip.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\net\sal_socket\impl\af_inet_lwip.c</FilePath>
+            </File>
+            <File>
+              <FileName>proto_mbedtls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal_socket\impl\proto_mbedtls.c</FilePath>
+            </File>
+            <File>
+              <FileName>net_sockets.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal_socket\socket\net_sockets.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_net.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\net\sal_socket\dfs_net\dfs_net.c</FilePath>
             </File>
           </Files>
         </Group>
