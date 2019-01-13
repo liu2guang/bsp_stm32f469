@@ -140,7 +140,15 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef *pcdHandle)
 
 static rt_err_t _ep_set_stall(rt_uint8_t address)
 {
-    HAL_PCD_EP_SetStall(&_stm_pcd, address);
+    if((address & 0x7f) == 0)
+    {
+        HAL_PCD_EP_SetStall(&_stm_pcd, 0x80);
+        HAL_PCD_EP_SetStall(&_stm_pcd, 0x00);
+    }
+    else
+    {
+        HAL_PCD_EP_SetStall(&_stm_pcd, address);
+    }
     return RT_EOK;
 }
 
