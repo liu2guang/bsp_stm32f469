@@ -6,6 +6,6 @@ cwd = GetCurrentDir()
 src = Glob('*.c') + Glob('*.S')
 CPPPATH = [cwd]
 
-group = DefineGroup('drv_audio', src, depend = ['BSP_USING_AUDIO_OLD'], CPPPATH = CPPPATH)
+group = DefineGroup('drv_audio', src, depend = ['BSP_USING_AUDIO'], CPPPATH = CPPPATH)
 
 Return('group')
