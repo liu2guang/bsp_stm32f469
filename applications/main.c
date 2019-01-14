@@ -28,6 +28,30 @@
 #include "audio_control.h"
 #endif
 
+#ifdef RT_USING_LWIP
+#include "lwip/ip_addr.h"
+#include "lwip/netif.h"
+
+static int get_wifi_status(void)
+{
+    ip_addr_t ip_addr;
+    int result = 0;
+
+    ip_addr_set_zero(&ip_addr);
+    if (ip_addr_cmp(&(netif_list->ip_addr), &ip_addr))
+    {
+        result = 0;
+    }
+    else
+    {
+        result = 1;
+        rt_kprintf("Got IP address : %s\n", ipaddr_ntoa(&(netif_list->ip_addr)));
+    }
+
+    return result;
+}
+#endif 
+
 int main(void)
 {   
 #if defined(BSP_USING_RAMDISK) && defined(BSP_USING_RAMDISK_MOUNT) 
@@ -65,6 +89,25 @@ int main(void)
     chdir(BSP_USING_SDCARD_PATH_MOUNT); 
 #endif
 
+#ifdef BSP_USING_RW00X
+    #define _SSID     ((const char *)"rtthread-ap")
+    #define _PASSWORD ((const char *)"12345678910")
+    
+    extern void wifi_spi_device_init(const char * device_name);
+    wifi_spi_device_init("wspi");
+    rt_hw_wifi_init("wspi",MODE_STATION);
+		
+    rw007_join(_SSID, _PASSWORD); 
+#endif
+    
+#ifdef RT_USING_LWIP
+    while (!get_wifi_status())
+    {
+        rt_thread_mdelay(100); 
+    }
+    rt_kprintf("--------------wifi connect\n");
+#endif
+
 #if defined(PKG_USING_PLAYER)
     extern int msh_exec(char *cmd, rt_size_t length);
 
@@ -74,17 +117,7 @@ int main(void)
     #define _cmd2 "listplayer --play" 	
     msh_exec(_cmd2, rt_strlen(_cmd2)); 	
 #endif
-
-#ifdef BSP_USING_RW00X
-        #define _SSID     ((const char *)"rtthread-ap")
-        #define _PASSWORD ((const char *)"12345678910")
-    extern void wifi_spi_device_init(const char * device_name);
-    wifi_spi_device_init("wspi");
-    rt_hw_wifi_init("wspi",MODE_STATION);
-		
-    rw007_join(_SSID, _PASSWORD); 
-#endif
-		
+        
 #ifdef PKG_USING_LUDIO
     rt_audio_control_t control = RT_NULL; 
     struct rt_audio_control_cfg cfg = {"i2c2", 1}; 
