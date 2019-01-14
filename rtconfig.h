@@ -103,6 +103,7 @@
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
+#define RT_USING_RTC
 #define RT_USING_SDIO
 #define RT_SDIO_STACK_SIZE 512
 #define RT_SDIO_THREAD_PRIORITY 15
@@ -116,6 +117,12 @@
 
 /* Using USB */
 
+#define RT_USING_USB_DEVICE
+#define RT_USBD_THREAD_STACK_SZ 4096
+#define USB_VENDOR_ID 0x0FFE
+#define USB_PRODUCT_ID 0x1234
+#define _RT_USB_DEVICE_RNDIS
+#define RT_USB_DEVICE_RNDIS
 
 /* POSIX layer and C standard library */
 
@@ -132,7 +139,8 @@
 /* protocol stack implement */
 
 #define SAL_USING_LWIP
-#define SAL_SOCKETS_NUM 16
+#define SAL_USING_TLS
+#define SAL_USING_POSIX
 #define SAL_PROTO_FAMILIES_NUM 4
 
 /* light weight TCP/IP stack */
@@ -153,7 +161,6 @@
 #define RT_LWIP_MSKADDR "255.255.255.0"
 #define RT_LWIP_UDP
 #define RT_LWIP_TCP
-#define RT_LWIP_RAW
 #define RT_MEMP_NUM_NETCONN 8
 #define RT_LWIP_PBUF_NUM 16
 #define RT_LWIP_RAW_PCB_NUM 4
@@ -194,6 +201,8 @@
 
 /* IoT - internet of things */
 
+#define PKG_USING_WEBCLIENT
+#define PKG_USING_WEBCLIENT_V100
 
 /* Wi-Fi */
 
@@ -202,19 +211,20 @@
 
 /* Wiced WiFi */
 
-#define PKG_USING_NETUTILS
-#define PKG_NETUTILS_PING
-#define PKG_NETUTILS_IPERF
-#define PKG_NETUTILS_NTP
-#define NETUTILS_NTP_TIMEZONE 8
-#define NETUTILS_NTP_HOSTNAME "cn.ntp.org.cn"
-#define PKG_USING_NETUTILS_LATEST_VERSION
 
 /* IoT Cloud */
 
 
 /* security packages */
 
+#define PKG_USING_MBEDTLS
+
+/* Select Root Certificate */
+
+#define MBEDTLS_AES_ROM_TABLES
+#define MBEDTLS_ECP_WINDOW_SIZE 2
+#define MBEDTLS_SSL_MAX_CONTENT_LEN 3584
+#define PKG_USING_MBEDTLS_V260
 
 /* language packages */
 
@@ -233,8 +243,38 @@
 
 /* miscellaneous packages */
 
+#define PKG_USING_OPTPARSE
+#define PKG_USING_OPTPARSE_V100
 
 /* samples: kernel and components samples */
+
+
+/* Privated Packages of RealThread */
+
+#define PKG_USING_CODEC
+#define PKG_USING_CODEC_V110
+#define CODEC_USING_HELIX_MP3
+#define PKG_USING_PLAYER
+#define PKG_USING_PLAYER_V122
+#define PLAYER_ENABLE_NET_STREAM
+#define PLAYER_USING_NETSTREAM_BUFSZ 2048
+#define PLAYER_USING_EXAMPLE00
+#define PLAYER_USING_EXAMPLE01
+
+/* examples */
+
+/* Audio codec configuration */
+
+#define PLAYER_ENABLE_CODEC_WAV
+#define PLAYER_ENABLE_CODEC_MP3
+
+/* Net related configuration */
+
+/* Application configuration */
+
+#define PLAYER_ENABLE_APP_LIST
+
+/* Network Utilities */
 
 #define SOC_STM32F469NI
 
@@ -265,6 +305,7 @@
 
 /* Select audio drivers */
 
+#define BSP_USING_AUDIO
 
 /* Select sdcard drivers */
 
@@ -275,7 +316,6 @@
 
 /* Select lcd drivers */
 
-#define BSP_USING_LCD
 
 /* Select ramdisk drivers */
 
@@ -286,13 +326,6 @@
 
 /* Select wifi drivers */
 
-#define BSP_USING_RW00X
-
-#define PKG_USING_RW007
-#define PKG_USING_LIBSTM32HAL
-#define LIBSTM32HAL_USING_STATIC_LIB    
-#define PKG_USING_LIBRWS
-#define LIBRWS_USING_EXAMPLE
-#define MEMP_NUM_NETDB 2 
+#define LWIP_TCP_KEEPALIVE 1
 
 #endif

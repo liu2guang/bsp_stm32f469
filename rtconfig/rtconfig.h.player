@@ -127,6 +127,7 @@
 /* POSIX layer and C standard library */
 
 #define RT_USING_LIBC
+#define RT_USING_PTHREADS
 #define RT_USING_POSIX
 
 /* Network */
@@ -138,6 +139,7 @@
 /* protocol stack implement */
 
 #define SAL_USING_LWIP
+#define SAL_USING_TLS
 #define SAL_USING_POSIX
 #define SAL_PROTO_FAMILIES_NUM 4
 
@@ -215,6 +217,14 @@
 
 /* security packages */
 
+#define PKG_USING_MBEDTLS
+
+/* Select Root Certificate */
+
+#define MBEDTLS_AES_ROM_TABLES
+#define MBEDTLS_ECP_WINDOW_SIZE 2
+#define MBEDTLS_SSL_MAX_CONTENT_LEN 3584
+#define PKG_USING_MBEDTLS_V260
 
 /* language packages */
 
@@ -245,9 +255,9 @@
 #define PKG_USING_CODEC_V110
 #define CODEC_USING_HELIX_MP3
 #define PKG_USING_PLAYER
-#define PKG_USING_PLAYER_V120
+#define PKG_USING_PLAYER_V122
 #define PLAYER_ENABLE_NET_STREAM
-#define PLAYER_USING_NETSTREAM_BUFSZ 720
+#define PLAYER_USING_NETSTREAM_BUFSZ 2048
 #define PLAYER_USING_EXAMPLE00
 #define PLAYER_USING_EXAMPLE01
 
@@ -316,8 +326,6 @@
 
 /* Select wifi drivers */
 
-#define PKG_USING_LIBSTM32HAL
-#define LIBSTM32HAL_USING_STATIC_LIB  
 #define LWIP_TCP_KEEPALIVE 1
 
 #endif

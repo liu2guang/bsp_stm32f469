@@ -101,7 +101,7 @@ int main(void)
 #endif
     
 #ifdef RT_USING_LWIP
-    while (!get_wifi_status())
+    while(!get_wifi_status())
     {
         rt_thread_mdelay(100); 
     }
