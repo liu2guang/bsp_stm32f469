@@ -105,16 +105,13 @@ int main(void)
     {
         rt_thread_mdelay(100); 
     }
-    rt_kprintf("--------------wifi connect\n");
+    rt_kprintf("--------------net connect\n");
 #endif
 
 #if defined(PKG_USING_PLAYER)
     extern int msh_exec(char *cmd, rt_size_t length);
 
-    #define _cmd1 "player -v 65" 	
-    msh_exec(_cmd1, rt_strlen(_cmd1)); 	
-
-    #define _cmd2 "listplayer --play" 	
+    #define _cmd2 "lp --play" 	
     msh_exec(_cmd2, rt_strlen(_cmd2)); 	
 #endif
         

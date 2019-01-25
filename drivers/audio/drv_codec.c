@@ -213,12 +213,12 @@ int rt_data_node_init(struct rt_data_node_list **node_list, rt_uint32_t size)
     memset(list, 0, sizeof(struct rt_data_node_list));
 
     node = rt_malloc(sizeof(struct rt_data_node) * size);
-    if (size == RT_NULL)
+    if (node == RT_NULL)
     {
         result = -RT_ENOMEM;
         goto __exit;
     }
-    memset(node, 0, sizeof(struct rt_data_node));
+    memset(node, 0, sizeof(struct rt_data_node) * size);
 
     list->node = node;
     list->size = size;
@@ -265,7 +265,9 @@ int rt_data_node_is_empty(struct rt_data_node_list *node_list)
 void wait_node_free(struct rt_data_node_list *node_list)
 {
     while (node_list->read_index != node_list->write_index)
+    {
         rt_thread_delay(5);
+    }
 }
 
 int rt_data_node_write(struct rt_data_node_list *node_list, void *buffer, rt_uint32_t size)
@@ -325,7 +327,11 @@ int rt_data_node_read(struct rt_data_node_list *node_list, void *buffer, rt_uint
 
         if (remain_len > size)
         {
-            memcpy(buffer, node->data_ptr + offset, size);
+            if(buffer != RT_NULL)
+            {
+                memcpy(buffer, node->data_ptr + offset, size);
+            }
+            
             node_list->read_offset += size;
             result = size;
         }
@@ -340,7 +346,11 @@ int rt_data_node_read(struct rt_data_node_list *node_list, void *buffer, rt_uint
             if (next_index >= node_list->size)
                 next_index = 0;
 
-            memcpy(buffer, node->data_ptr + offset, remain_len);
+            if(buffer != RT_NULL)
+            {
+                memcpy(buffer, node->data_ptr + offset, remain_len);
+            }
+            
             node_list->read_offset += remain_len;
             /* notify transmitted complete. */
             if (node_list->read_complete != RT_NULL)
@@ -357,7 +367,10 @@ int rt_data_node_read(struct rt_data_node_list *node_list, void *buffer, rt_uint
             else
             {
                 node = &node_list->node[next_index];
-                memcpy((char *)buffer + remain_len, node->data_ptr, size - remain_len);
+                if(buffer != RT_NULL)
+                {
+                    memcpy((char *)buffer + remain_len, node->data_ptr, size - remain_len);
+                }
                 node_list->read_index = next_index;
                 node_list->read_offset = size - remain_len;
                 result = size;
@@ -366,6 +379,20 @@ int rt_data_node_read(struct rt_data_node_list *node_list, void *buffer, rt_uint
     }
 
     return result;
+}
+
+void rt_data_node_empty(struct rt_data_node_list *node_list)
+{
+    rt_base_t level;
+
+    level = rt_hw_interrupt_disable();
+    
+    while(rt_data_node_is_empty(node_list) == RT_FALSE)
+    {
+        rt_data_node_read(node_list, RT_NULL, 1024); 
+    }
+
+    rt_hw_interrupt_enable(level);
 }
 
 static rt_err_t audio_codec_init(rt_device_t dev)
@@ -389,7 +416,8 @@ static rt_err_t audio_codec_close(rt_device_t dev)
     audio = (struct audio_codec_device *)dev;
     
     /* 没有这个切换歌曲的时候就会先放之前最后的数据才放下一首, 体验非常差 */ 
-    wait_node_free(audio->node_list);
+    rt_data_node_empty(audio->node_list); 
+    // wait_node_free(audio->node_list);
     
     if(cs43l22_stop() != RT_EOK)
     {  
