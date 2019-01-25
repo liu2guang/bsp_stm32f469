@@ -8,7 +8,7 @@
 
 /* RT-Thread Kernel */
 
-#define RT_NAME_MAX 8
+#define RT_NAME_MAX 12
 #define RT_ALIGN_SIZE 4
 #define RT_THREAD_PRIORITY_32
 #define RT_THREAD_PRIORITY_MAX 32
@@ -61,16 +61,15 @@
 #define RT_USING_FINSH
 #define FINSH_THREAD_NAME "tshell"
 #define FINSH_USING_HISTORY
-#define FINSH_HISTORY_LINES 10
+#define FINSH_HISTORY_LINES 5
 #define FINSH_USING_SYMTAB
 #define FINSH_USING_DESCRIPTION
 #define FINSH_THREAD_PRIORITY 20
 #define FINSH_THREAD_STACK_SIZE 4096
-#define FINSH_CMD_SIZE 256
+#define FINSH_CMD_SIZE 80
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
-#define FINSH_USING_MSH_ONLY
-#define FINSH_ARG_MAX 16
+#define FINSH_ARG_MAX 10
 
 /* Device virtual file system */
 
@@ -89,7 +88,7 @@
 #define RT_DFS_ELM_USE_LFN 3
 #define RT_DFS_ELM_MAX_LFN 255
 #define RT_DFS_ELM_DRIVES 2
-#define RT_DFS_ELM_MAX_SECTOR_SIZE 512
+#define RT_DFS_ELM_MAX_SECTOR_SIZE 4096
 #define RT_DFS_ELM_REENTRANT
 #define RT_USING_DFS_DEVFS
 #define RT_USING_DFS_ROMFS
@@ -100,86 +99,27 @@
 #define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
-#define RT_USING_I2C
-#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
-#define RT_USING_RTC
-#define RT_USING_SDIO
-#define RT_SDIO_STACK_SIZE 512
-#define RT_SDIO_THREAD_PRIORITY 15
-#define RT_MMCSD_STACK_SIZE 1024
-#define RT_MMCSD_THREAD_PREORITY 22
-#define RT_MMCSD_MAX_PARTITION 16
-#define RT_USING_SPI
 
 /* Using WiFi */
 
 
 /* Using USB */
 
-#define RT_USING_USB_DEVICE
-#define RT_USBD_THREAD_STACK_SZ 4096
-#define USB_VENDOR_ID 0x0FFE
-#define USB_PRODUCT_ID 0x1234
-#define _RT_USB_DEVICE_RNDIS
-#define RT_USB_DEVICE_RNDIS
 
 /* POSIX layer and C standard library */
 
 #define RT_USING_LIBC
+#define RT_USING_PTHREADS
 #define RT_USING_POSIX
 
 /* Network */
 
 /* Socket abstraction layer */
 
-#define RT_USING_SAL
-
-/* protocol stack implement */
-
-#define SAL_USING_LWIP
-#define SAL_USING_TLS
-#define SAL_USING_POSIX
-#define SAL_PROTO_FAMILIES_NUM 4
 
 /* light weight TCP/IP stack */
 
-#define RT_USING_LWIP
-#define RT_USING_LWIP202
-#define RT_LWIP_IGMP
-#define RT_LWIP_ICMP
-#define RT_LWIP_DNS
-#define RT_LWIP_DHCP
-#define IP_SOF_BROADCAST 1
-#define IP_SOF_BROADCAST_RECV 1
-
-/* Static IPv4 Address */
-
-#define RT_LWIP_IPADDR "192.168.1.30"
-#define RT_LWIP_GWADDR "192.168.1.1"
-#define RT_LWIP_MSKADDR "255.255.255.0"
-#define RT_LWIP_UDP
-#define RT_LWIP_TCP
-#define RT_MEMP_NUM_NETCONN 8
-#define RT_LWIP_PBUF_NUM 16
-#define RT_LWIP_RAW_PCB_NUM 4
-#define RT_LWIP_UDP_PCB_NUM 4
-#define RT_LWIP_TCP_PCB_NUM 4
-#define RT_LWIP_TCP_SEG_NUM 40
-#define RT_LWIP_TCP_SND_BUF 8196
-#define RT_LWIP_TCP_WND 8196
-#define RT_LWIP_TCPTHREAD_PRIORITY 10
-#define RT_LWIP_TCPTHREAD_MBOX_SIZE 8
-#define RT_LWIP_TCPTHREAD_STACKSIZE 1024
-#define RT_LWIP_ETHTHREAD_PRIORITY 12
-#define RT_LWIP_ETHTHREAD_STACKSIZE 1024
-#define RT_LWIP_ETHTHREAD_MBOX_SIZE 8
-#define LWIP_NETIF_STATUS_CALLBACK 1
-#define SO_REUSE 1
-#define LWIP_SO_RCVTIMEO 1
-#define LWIP_SO_SNDTIMEO 1
-#define LWIP_SO_RCVBUF 1
-#define LWIP_NETIF_LOOPBACK 0
 
 /* Modbus master and slave stack */
 
@@ -200,9 +140,6 @@
 
 /* IoT - internet of things */
 
-#define PKG_USING_WEBCLIENT
-#define WEBCLIENT_USING_TLS
-#define PKG_USING_WEBCLIENT_V100
 
 /* Wi-Fi */
 
@@ -217,26 +154,6 @@
 
 /* security packages */
 
-#define PKG_USING_MBEDTLS
-
-/* Select Root Certificate */
-
-#define PKG_USING_MBEDTLS_USE_ALL_CERTS
-#define PKG_USING_MBEDTLS_THAWTE_ROOT_CA
-#define PKG_USING_MBEDTLS_VERSIGN_PBULIC_ROOT_CA
-#define PKG_USING_MBEDTLS_VERSIGN_UNIVERSAL_ROOT_CA
-#define PKG_USING_MBEDTLS_GEOTRUST_ROOT_CA
-#define PKG_USING_MBEDTLS_DIGICERT_ROOT_CA
-#define PKG_USING_MBEDTLS_GODADDY_ROOT_CA
-#define PKG_USING_MBEDTLS_COMODOR_ROOT_CA
-#define PKG_USING_MBEDTLS_DST_ROOT_CA
-#define PKG_USING_MBEDTLS_CLOBALSIGN_ROOT_CA
-#define PKG_USING_MBEDTLS_ENTRUST_ROOT_CA
-#define MBEDTLS_AES_ROM_TABLES
-#define MBEDTLS_ECP_WINDOW_SIZE 2
-#define MBEDTLS_SSL_MAX_CONTENT_LEN 3584
-#define PKG_USING_MBEDTLS_DEBUG
-#define PKG_USING_MBEDTLS_V260
 
 /* language packages */
 
@@ -255,39 +172,21 @@
 
 /* miscellaneous packages */
 
-#define PKG_USING_OPTPARSE
-#define PKG_USING_OPTPARSE_V100
 
 /* samples: kernel and components samples */
 
 
 /* Privated Packages of RealThread */
 
-#define PKG_USING_CODEC
-#define PKG_USING_CODEC_V110
-#define CODEC_USING_HELIX_MP3
-#define PKG_USING_PLAYER
-#define PKG_USING_PLAYER_V122
-#define PLAYER_ENABLE_NET_STREAM
-#define PLAYER_USING_NETSTREAM_BUFSZ 2048
-#define PLAYER_USING_EXAMPLE00
-#define PLAYER_USING_EXAMPLE01
-
-/* examples */
-
-/* Audio codec configuration */
-
-#define PLAYER_ENABLE_CODEC_WAV
-#define PLAYER_ENABLE_CODEC_MP3
-
-/* Net related configuration */
-
-/* Application configuration */
-
-#define PLAYER_ENABLE_APP_LIST
 
 /* Network Utilities */
 
+
+/* rtpkgs online packages */
+
+#define PKG_USING_LIBSTM32HAL
+#define PKG_USING_LIBSTM32HAL_V010
+#define LIBSTM32HAL_USING_STATIC_LIB
 #define SOC_STM32F469NI
 
 /* STM32 Bsp Config */
@@ -304,12 +203,9 @@
 
 /* Select i2c bus drivers */
 
-#define BSP_USING_I2C2
 
 /* Select spi bus drivers */
 
-#define BSP_USING_SPI2
-#define SPI_USING_DMA
 
 /* Select sdram drivers */
 
@@ -317,7 +213,6 @@
 
 /* Select audio drivers */
 
-#define BSP_USING_AUDIO
 
 /* Select sdcard drivers */
 
@@ -338,6 +233,5 @@
 
 /* Select wifi drivers */
 
-#define LWIP_TCP_KEEPALIVE 1
 
 #endif
