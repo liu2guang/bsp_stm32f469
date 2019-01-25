@@ -45,7 +45,7 @@ static int get_wifi_status(void)
     else
     {
         result = 1;
-        rt_kprintf("Got IP address : %s\n", ipaddr_ntoa(&(netif_list->ip_addr)));
+        rt_kprintf("IP address: %s\n", ipaddr_ntoa(&(netif_list->ip_addr)));
     }
 
     return result;
@@ -88,24 +88,31 @@ int main(void)
     extern int chdir(const char *path); 
     chdir(BSP_USING_SDCARD_PATH_MOUNT); 
 #endif
+    
+#if defined(RT_USING_LWIP) && defined(BSP_USING_RW00X) 
+    int cnt = 1; 
 
-#ifdef BSP_USING_RW00X
     #define _SSID     ((const char *)"rtthread-ap")
     #define _PASSWORD ((const char *)"12345678910")
     
     extern void wifi_spi_device_init(const char * device_name);
     wifi_spi_device_init("wspi");
-    rt_hw_wifi_init("wspi",MODE_STATION);
-		
-    rw007_join(_SSID, _PASSWORD); 
-#endif
+    rt_hw_wifi_init("wspi", MODE_STATION);    
     
-#ifdef RT_USING_LWIP
-    while(!get_wifi_status())
+    rt_kprintf("Try connecting...\n");
+    rw007_join(_SSID, _PASSWORD); 
+    
+    while(!get_wifi_status()) 
     {
+        if(cnt++ % (50) == 0)
+        {
+            rt_kprintf("Try reconnecting...\n");
+            rw007_join(_SSID, _PASSWORD); 
+        }
+        
         rt_thread_mdelay(100); 
     }
-    rt_kprintf("--------------net connect\n");
+    rt_kprintf("Net connect successful!\n");
 #endif
 
 #if defined(PKG_USING_PLAYER)
