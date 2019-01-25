@@ -31,3 +31,7 @@ JLinkSettings.ini
 *.dbsqlite
 .DS_Store
 /packages
+/project.uvoptx
+/project.uvprojx
+/cconfig.h
+/.sconsign.dblite
