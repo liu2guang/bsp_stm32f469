@@ -27,8 +27,7 @@ elif CROSS_TOOL == 'iar':
 if os.getenv('RTT_EXEC_PATH'):
 	EXEC_PATH = os.getenv('RTT_EXEC_PATH')
 
-BUILD = 'debug'
-#BUILD = 'release'
+BUILD = 'debug' #release
 
 if PLATFORM == 'gcc':
     # tool-chains
@@ -45,7 +44,7 @@ if PLATFORM == 'gcc':
     DEVICE = ' -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections'
     CFLAGS = DEVICE + ' -std=c99'
     AFLAGS = ' -c' + DEVICE + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
-    LFLAGS = DEVICE + ' -Wl,--gc-sections,-Map=rtthread-stm32.map,-cref,-u,Reset_Handler -T stm32_rom.ld'
+    LFLAGS = DEVICE + ' -Wl,--gc-sections,-Map=rtthread.map,-cref,-u,Reset_Handler -T drivers/linker_scripts/link.lds'
 
     CPATH = ''
     LPATH = ''
@@ -56,7 +55,7 @@ if PLATFORM == 'gcc':
     else:
         CFLAGS += ' -O2'
 
-    POST_ACTION = OBJCPY + ' -O binary $TARGET rtthread.bin\n' + SIZE + ' $TARGET \n'
+    POST_ACTION = OBJCPY + ' -O binary $TARGET build/rtthread_gcc.bin\n' + SIZE + ' $TARGET \n'
 
 elif PLATFORM == 'armcc':
     # toolchains
@@ -69,7 +68,7 @@ elif PLATFORM == 'armcc':
     DEVICE = ' --cpu Cortex-M4.fp '
     CFLAGS = '-c ' + DEVICE + ' --apcs=interwork --c99' # -D' + PART_TYPE
     AFLAGS = DEVICE + ' --apcs=interwork '
-    LFLAGS = DEVICE + ' --scatter "stm32_rom.sct" --info sizes --info totals --info unused --info veneers --list rtthread-stm32.map --strict'
+    LFLAGS = DEVICE + ' --scatter "drivers\linker_scripts\link.sct" --info sizes --info totals --info unused --info veneers --list rtthread.map --strict'
 
     CFLAGS += ' -I' + EXEC_PATH + '/ARM/ARMCC/INC'
     LFLAGS += ' --libpath ' + EXEC_PATH + '/ARM/ARMCC/LIB'
@@ -85,7 +84,7 @@ elif PLATFORM == 'armcc':
     else:
         CFLAGS += ' -O2'
 
-    POST_ACTION = 'fromelf --bin $TARGET --output rtthread.bin \nfromelf -z $TARGET'
+    POST_ACTION = 'fromelf --bin $TARGET --output build/rtthread_mdk.bin \nfromelf -z $TARGET'
 
 elif PLATFORM == 'iar':
     # toolchains
@@ -128,9 +127,9 @@ elif PLATFORM == 'iar':
     else:
         CFLAGS += ' -Oh'    	
 	
-    LFLAGS = ' --config "stm32_rom.icf"'
+    LFLAGS = ' --config "drivers/linker_scripts/link.icf"'
     LFLAGS += ' --entry __iar_program_start'    
     #LFLAGS += ' --silent'
 	
     EXEC_PATH = EXEC_PATH + '/arm/bin/'
-    POST_ACTION = ''
+    POST_ACTION = 'ielftool --bin $TARGET build/rtthread_iar.bin'
