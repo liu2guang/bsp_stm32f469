@@ -99,6 +99,8 @@
 #define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 
@@ -215,6 +217,9 @@
 
 /* Privated Packages of RealThread */
 
+#define PKG_USING_CODEC
+#define PKG_USING_CODEC_V110
+#define CODEC_USING_HELIX_MP3
 
 /* Network Utilities */
 
@@ -240,6 +245,7 @@
 
 /* Select i2c bus drivers */
 
+#define BSP_USING_I2C2
 
 /* Select spi bus drivers */
 
@@ -252,13 +258,14 @@
 
 /* Select audio drivers */
 
+#define BSP_USING_AUDIO
 
 /* Select sdcard drivers */
 
 #define BSP_USING_SDCARD
 #define BSP_USING_SDCARD_BLOCK
 #define BSP_USING_SDCARD_MOUNT
-#define BSP_USING_SDCARD_PATH_MOUNT "/mnt/sd"
+#define BSP_USING_SDCARD_PATH_MOUNT "/mnt/sdcard"
 
 /* Select lcd drivers */
 
@@ -268,11 +275,11 @@
 #define BSP_USING_RAMDISK
 #define BSP_USING_RAMDISK_SIZE 4
 #define BSP_USING_RAMDISK_MOUNT
-#define BSP_USING_RAMDISK_PATH_MOUNT "/mnt/tmp"
+#define BSP_USING_RAMDISK_PATH_MOUNT "/mnt/sdram"
 
 /* Select wifi drivers */
 
 #define BSP_USING_RW00X
-#define PKG_USING_RW007
+#define PKG_USING_RW007 
 
 #endif

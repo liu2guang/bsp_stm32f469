@@ -19,16 +19,16 @@
 #include <dfs_posix.h>
 #endif
 
-#ifdef BSP_USING_RW00X
+#if defined(BSP_USING_RW00X) && defined(PKG_USING_RW007) 
 #include <spi_wifi_rw007.h>
 #endif
 
-#ifdef PKG_USING_LUDIO
+#if defined(PKG_USING_LUDIO)
 #include "audio.h" 
 #include "audio_control.h"
 #endif
 
-#ifdef RT_USING_LWIP
+#if defined(RT_USING_LWIP) && defined(BSP_USING_RW00X) && defined(PKG_USING_RW007) 
 #include "lwip/ip_addr.h"
 #include "lwip/netif.h"
 
@@ -54,6 +54,9 @@ static int get_wifi_status(void)
 
 int main(void)
 {   
+    extern struct romfs_dirent romfs_root; 
+    dfs_mount(RT_NULL, "/", "rom", 0, &romfs_root);
+    
 #if defined(BSP_USING_RAMDISK) && defined(BSP_USING_RAMDISK_MOUNT) 
     dfs_mkfs("elm", "ram0"); 
     
@@ -89,10 +92,13 @@ int main(void)
     chdir(BSP_USING_SDCARD_PATH_MOUNT); 
 #endif
     
-#if defined(RT_USING_LWIP) && defined(BSP_USING_RW00X) 
+#if defined(RT_USING_LWIP) && defined(BSP_USING_RW00X) && defined(PKG_USING_RW007) 
     int cnt = 1; 
 
     #define _SSID     ((const char *)"rtthread-ap")
+    #define _PASSWORD ((const char *)"12345678910")
+        
+    #define _SSID     ((const char *)"TP-LINK_9D8F")
     #define _PASSWORD ((const char *)"12345678910")
     
     extern void wifi_spi_device_init(const char * device_name);

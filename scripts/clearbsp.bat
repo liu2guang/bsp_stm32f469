@@ -10,4 +10,8 @@ if exist "project.uvprojx" del /a /f /q project.uvprojx
 if exist "cconfig.h" del /a /f /q cconfig.h
 if exist "DebugConfig"  rmdir /S /Q DebugConfig
 if exist "build"  rmdir /S /Q build
+if exist ".vscode"  rmdir /S /Q .vscode
+if exist "JLinkLog.txt" del /a /f /q JLinkLog.txt
+if exist "JLinkSettings.ini" del /a /f /q JLinkSettings.ini
+if exist ".config.old" del /a /f /q .config.old
 exit

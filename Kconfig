@@ -127,7 +127,7 @@ menu "Select sdcard drivers"
     
     config BSP_USING_SDCARD_PATH_MOUNT
         string "Path of sdcard mount"
-        default "/mnt/sd" 
+        default "/mnt/sdcard" 
         depends on BSP_USING_SDCARD && BSP_USING_SDCARD_MOUNT
 endmenu
 
@@ -156,14 +156,14 @@ menu "Select ramdisk drivers"
 
     config BSP_USING_RAMDISK_PATH_MOUNT
         string "Path of ramdisk mount"
-        default "/mnt/tmp" 
+        default "/mnt/sdram" 
         depends on BSP_USING_RAMDISK 
 endmenu
 
 menu "Select wifi drivers"
     config BSP_USING_RW00X
         bool "Using rw00x wifi driver" 
-        default n 
+        default y 
         select RT_USING_LWIP
         select BSP_USING_SPI2
         select PKG_USING_RW007
