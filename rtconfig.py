@@ -55,7 +55,7 @@ if PLATFORM == 'gcc':
     else:
         CFLAGS += ' -O2'
 
-    POST_ACTION = OBJCPY + ' -O binary $TARGET build/rtthread_gcc.bin\n' + SIZE + ' $TARGET \n'
+    POST_ACTION = OBJCPY + ' -O binary $TARGET build/rtthread_gcc.bin\n' + SIZE + ' $TARGET \n' + 'cmd.exe /k "call scripts\clear.bat"\n'
 
 elif PLATFORM == 'armcc':
     # toolchains
@@ -84,7 +84,7 @@ elif PLATFORM == 'armcc':
     else:
         CFLAGS += ' -O2'
 
-    POST_ACTION = 'fromelf --bin $TARGET --output build/rtthread_mdk.bin \nfromelf -z $TARGET'
+    POST_ACTION = 'fromelf --bin $TARGET --output build/rtthread_mdk.bin \nfromelf -z $TARGET \n' + 'cmd.exe /k "call scripts\clear.bat"\n'
 
 elif PLATFORM == 'iar':
     # toolchains
@@ -132,4 +132,4 @@ elif PLATFORM == 'iar':
     #LFLAGS += ' --silent'
 	
     EXEC_PATH = EXEC_PATH + '/arm/bin/'
-    POST_ACTION = 'ielftool --bin $TARGET build/rtthread_iar.bin'
+    POST_ACTION = 'ielftool --bin $TARGET build/rtthread_iar.bin \n' + 'cmd.exe /k "call scripts\clear.bat"\n'

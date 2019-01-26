@@ -2,7 +2,6 @@ import os
 import sys
 import rtconfig
 
-
 RTT_ROOT = os.path.normpath(os.getcwd() + '/rt-thread')
 
 sys.path = sys.path + [os.path.join(RTT_ROOT, 'tools')]
