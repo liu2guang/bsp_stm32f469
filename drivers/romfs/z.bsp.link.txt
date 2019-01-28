@@ -1,2 +1,3 @@
-×÷Õß: https://github.com/liu2guang
-²Ö¿â: https://github.com/liu2guang/bsp_stm32f469
+Author: https://github.com/liu2guang
+repository: https://github.com/liu2guang/bsp_stm32f469
+license: https://github.com/liu2guang/bsp_stm32f469/blob/master/LICENSE

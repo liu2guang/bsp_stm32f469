@@ -94,26 +94,59 @@ int main(void)
     
 #if defined(RT_USING_LWIP) && defined(BSP_USING_RW00X) && defined(PKG_USING_RW007) 
     int cnt = 1; 
-
-    #define _SSID     ((const char *)"rtthread-ap")
-    #define _PASSWORD ((const char *)"12345678910")
-        
-    #define _SSID     ((const char *)"TP-LINK_9D8F")
-    #define _PASSWORD ((const char *)"12345678910")
+    int point = (-1); 
+    rw007_ap_info *ap_info = RT_NULL;
+    
+    #define SSID_NUM (2)
+    const char *ssids[] = 
+    {
+        "rtthread-ap", "TP-LINK_9D8F"
+    }; 
+    
+    const char *passwords[] = 
+    {
+        "12345678910", "12345678910"
+    }; 
     
     extern void wifi_spi_device_init(const char * device_name);
     wifi_spi_device_init("wspi");
     rt_hw_wifi_init("wspi", MODE_STATION);    
+
+    rt_err_t ret = (-RT_ERROR);
+    struct rw007_wifi *wifi = RT_NULL;
+
+    wifi = (struct rw007_wifi *)rt_device_find("w0");
+
+    ret = rt_device_control((rt_device_t)wifi, RW007_CMD_SCAN, RT_NULL);
+    if (ret == RT_EOK)
+    {
+        uint32_t i = 0, j = 0;
+        
+        for (i = 0; i < wifi->ap_scan_count; i++)
+        {
+            ap_info = &wifi->ap_scan[i];
+            
+            for(j = 0; j < SSID_NUM; j++)
+            {
+                if(rt_strcmp(ap_info->ssid, ssids[j]) == 0) 
+                {
+                    point = j; 
+                    goto _connect;
+                }
+            }
+        }
+    }
     
-    rt_kprintf("Try connecting...\n");
-    rw007_join(_SSID, _PASSWORD); 
+_connect:
+    rt_kprintf("\nTry connect SSID: %s ...\n", ap_info->ssid);
+    rw007_join(ssids[point], passwords[point]); 
     
     while(!get_wifi_status()) 
     {
         if(cnt++ % (50) == 0)
         {
             rt_kprintf("Try reconnecting...\n");
-            rw007_join(_SSID, _PASSWORD); 
+            rw007_join(ssids[point], passwords[point]); 
         }
         
         rt_thread_mdelay(100); 
