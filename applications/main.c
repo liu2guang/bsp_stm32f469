@@ -88,6 +88,10 @@ int main(void)
         rt_kprintf("sdcard mount '%s' failed.\n", BSP_USING_SDCARD_PATH_MOUNT); 
     }
     
+    extern int stm_usbh_register(void); 
+    
+    stm_usbh_register();
+    
     extern int chdir(const char *path); 
     chdir(BSP_USING_SDCARD_PATH_MOUNT); 
 #endif
@@ -97,15 +101,15 @@ int main(void)
     int point = (-1); 
     rw007_ap_info *ap_info = RT_NULL;
     
-    #define SSID_NUM (2)
+    #define SSID_NUM (3)
     const char *ssids[] = 
     {
-        "rtthread-ap", "TP-LINK_9D8F"
+        "rtthread-ap", "TP-LINK_9D8F", "realthread"
     }; 
     
     const char *passwords[] = 
     {
-        "12345678910", "12345678910"
+        "12345678910", "12345678910", "02158995663"
     }; 
      
 
