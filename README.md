@@ -31,13 +31,13 @@ STM32F469NI板级包支持MDK5开发环境和GCC编译器，以下是具体版�
 | GPIO | 支持所有GPIO口 |
 | IIC | 支持模拟IIC2总线 |
 | SPI | 支持SPI1/2, 2支持dma |
-| ETH | 不支持 |
+| WIFI | BSP默认支持RW007 |
 | LCD | 支持单framebuffer模式 |
 | RTC | 未支持 |
 | SDCARD | 支持块设备和SDIO设备驱动 |
 | SDRAM | 支持 |
 | AUDIO | 支持 |
-| USB | 支持 | |
+| USB | 支持, BSP默认开启U盘 | |
 | RAMDISK | 支持 |
 | QSPI | 未支持 |
 | WDG | 未支持 |
