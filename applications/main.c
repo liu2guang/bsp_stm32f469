@@ -97,20 +97,17 @@ int main(void)
     int point = (-1); 
     rw007_ap_info *ap_info = RT_NULL;
     
-    #define SSID_NUM (2)
+    #define SSID_NUM (3)
     const char *ssids[] = 
     {
-        "rtthread-ap", "TP-LINK_9D8F"
+        "rtthread-ap", "TP-LINK_9D8F", "realthread"
     }; 
     
     const char *passwords[] = 
     {
-        "12345678910", "12345678910"
+        "12345678910", "12345678910", "02158995663"
     }; 
-    
-    extern void wifi_spi_device_init(const char * device_name);
-    wifi_spi_device_init("wspi");
-    rt_hw_wifi_init("wspi", MODE_STATION);    
+     
 
     rt_err_t ret = (-RT_ERROR);
     struct rw007_wifi *wifi = RT_NULL;
@@ -168,6 +165,13 @@ _connect:
     control = rt_audio_control_find("CS43L22"); 
     rt_audio_control_load(control, &cfg); 
 #endif
+    
+    int fildes[2] = {0}; 
+    
+    extern int pipe(int fildes[2]); 
+    int ret1 = pipe(fildes); 
+    
+    rt_kprintf("ret1 = %d.\n", ret1); 
 }
 
 #if defined(PKG_USING_PLAYER)

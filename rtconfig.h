@@ -187,6 +187,15 @@
 
 /* Wiced WiFi */
 
+#define PKG_USING_RW007
+#define PKG_USING_RW007_LATEST_VERSION
+#define RW007_USING_STM32_DRIVERS
+#define RW007_SPI_BUS_NAME "spi2"
+#define RW007_CS_PIN 102
+#define RW007_BOOT0_PIN 175
+#define RW007_BOOT1_PIN 102
+#define RW007_INT_BUSY_PIN 62
+#define RW007_RST_PIN 187
 
 /* IoT Cloud */
 
@@ -280,6 +289,5 @@
 /* Select wifi drivers */
 
 #define BSP_USING_RW00X
-#define PKG_USING_RW007 
 
 #endif
