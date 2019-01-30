@@ -14,4 +14,5 @@ if exist ".vscode"  rmdir /S /Q .vscode
 if exist "JLinkLog.txt" del /a /f /q JLinkLog.txt
 if exist "JLinkSettings.ini" del /a /f /q JLinkSettings.ini
 if exist ".config.old" del /a /f /q .config.old
+if exist "EventRecorderStub.scvd" del /a /f /q EventRecorderStub.scvd
 exit
