@@ -139,6 +139,8 @@ int wavplay(int argc, char **argv)
                            10);
     if (tid != RT_NULL)
         rt_thread_startup(tid);
+    
+    return 0; 
 }
 
 MSH_CMD_EXPORT(wavplay, wavplay song.wav);
