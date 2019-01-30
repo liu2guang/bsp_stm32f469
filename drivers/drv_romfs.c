@@ -26,10 +26,17 @@ static const struct romfs_dirent _romfs_root_mnt_sdram[] = {
     {ROMFS_DIRENT_FILE, "null", RT_NULL, 0}
 };
 
+
+
+static const struct romfs_dirent _romfs_root_mnt_usbdisk[] = {
+    {ROMFS_DIRENT_FILE, "null", RT_NULL, 0}
+};
+
 static const struct romfs_dirent _romfs_root_mnt[] = {
     {ROMFS_DIRENT_DIR, "flash", (rt_uint8_t *)_romfs_root_mnt_flash, sizeof(_romfs_root_mnt_flash)/sizeof(_romfs_root_mnt_flash[0])},
     {ROMFS_DIRENT_DIR, "sdcard", (rt_uint8_t *)_romfs_root_mnt_sdcard, sizeof(_romfs_root_mnt_sdcard)/sizeof(_romfs_root_mnt_sdcard[0])},
-    {ROMFS_DIRENT_DIR, "sdram", (rt_uint8_t *)_romfs_root_mnt_sdram, sizeof(_romfs_root_mnt_sdram)/sizeof(_romfs_root_mnt_sdram[0])}
+    {ROMFS_DIRENT_DIR, "sdram", (rt_uint8_t *)_romfs_root_mnt_sdram, sizeof(_romfs_root_mnt_sdram)/sizeof(_romfs_root_mnt_sdram[0])},
+    {ROMFS_DIRENT_DIR, "usbdisk", (rt_uint8_t *)_romfs_root_mnt_usbdisk, sizeof(_romfs_root_mnt_usbdisk)/sizeof(_romfs_root_mnt_usbdisk[0])}
 };
 
 static const rt_uint8_t _romfs_root_z_bsp_link_txt[] = {

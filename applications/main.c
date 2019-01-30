@@ -97,15 +97,15 @@ int main(void)
     int point = (-1); 
     rw007_ap_info *ap_info = RT_NULL;
     
-    #define SSID_NUM (3)
+    #define SSID_NUM (2)
     const char *ssids[] = 
     {
-        "rtthread-ap", "TP-LINK_9D8F", "realthread"
+        "rtthread-ap", "TP-LINK_9D8F"
     }; 
     
     const char *passwords[] = 
     {
-        "12345678910", "12345678910", "02158995663"
+        "12345678910", "12345678910"
     }; 
      
 

@@ -67,7 +67,6 @@ extern "C" {
 /* #define HAL_IRDA_MODULE_ENABLED      */
 /* #define HAL_SMARTCARD_MODULE_ENABLED */
 /* #define HAL_WWDG_MODULE_ENABLED      */
-/* #define HAL_HCD_MODULE_ENABLED       */
 
 #define HAL_MODULE_ENABLED
 #define HAL_DMA_MODULE_ENABLED
@@ -88,6 +87,7 @@ extern "C" {
 #define HAL_CORTEX_MODULE_ENABLED
 #define HAL_SAI_MODULE_ENABLED
 #define HAL_I2C_MODULE_ENABLED
+#define HAL_HCD_MODULE_ENABLED
 
 #ifdef RT_USING_RTC
 #define HAL_RTC_MODULE_ENABLED

@@ -75,8 +75,8 @@
 
 #define RT_USING_DFS
 #define DFS_USING_WORKDIR
-#define DFS_FILESYSTEMS_MAX 4
-#define DFS_FILESYSTEM_TYPES_MAX 4
+#define DFS_FILESYSTEMS_MAX 6
+#define DFS_FILESYSTEM_TYPES_MAX 6
 #define DFS_FD_MAX 16
 #define RT_USING_DFS_ELMFAT
 
@@ -87,7 +87,7 @@
 #define RT_DFS_ELM_USE_LFN_3
 #define RT_DFS_ELM_USE_LFN 3
 #define RT_DFS_ELM_MAX_LFN 255
-#define RT_DFS_ELM_DRIVES 2
+#define RT_DFS_ELM_DRIVES 4
 #define RT_DFS_ELM_MAX_SECTOR_SIZE 4096
 #define RT_DFS_ELM_REENTRANT
 #define RT_USING_DFS_DEVFS
@@ -109,6 +109,10 @@
 
 /* Using USB */
 
+#define RT_USING_USB_HOST
+#define RT_USBH_MSTORAGE
+#define UDISK_MOUNTPOINT "/mnt/usbdisk"
+#define RT_USBD_THREAD_STACK_SZ 4096
 
 /* POSIX layer and C standard library */
 
