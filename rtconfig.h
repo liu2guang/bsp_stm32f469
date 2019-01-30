@@ -41,7 +41,7 @@
 #define RT_USING_CONSOLE
 #define RT_CONSOLEBUF_SIZE 4096
 #define RT_CONSOLE_DEVICE_NAME "uart3"
-#define RT_VER_NUM 0x40000
+#define RT_VER_NUM 0x40001
 #define ARCH_ARM
 #define ARCH_ARM_CORTEX_M
 #define ARCH_ARM_CORTEX_M4
@@ -99,6 +99,7 @@
 #define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
+#define RT_SERIAL_RB_BUFSZ 64
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
@@ -224,15 +225,28 @@
 
 /* miscellaneous packages */
 
+#define PKG_USING_OPTPARSE
+#define PKG_USING_OPTPARSE_V100
 
 /* samples: kernel and components samples */
 
+#define PKG_USING_VI
+#define VI_MAX_LEN 4096
+#define VI_ENABLE_COLON
+#define VI_ENABLE_YANKMARK
+#define VI_ENABLE_SEARCH
+#define VI_ENABLE_DOT_CMD
+#define VI_ENABLE_READONLY
+#define VI_ENABLE_SETOPTS
+#define VI_ENABLE_SET
+#define VI_ENABLE_VI_ASK_TERMINAL
+#define VI_ENABLE_UNDO
+#define VI_ENABLE_UNDO_QUEUE
+#define VI_UNDO_QUEUE_MAX 256
+#define PKG_USING_VI_LATEST_VERSION
 
 /* Privated Packages of RealThread */
 
-#define PKG_USING_CODEC
-#define PKG_USING_CODEC_V110
-#define CODEC_USING_HELIX_MP3
 
 /* Network Utilities */
 
