@@ -1,172 +1,33 @@
 mainmenu "RT-Thread Configuration"
 
+# Bsp Path
 config $BSP_DIR
     string
     option env="BSP_ROOT"
     default "."
 
+# RT-Thread Path
 config $RTT_DIR
     string
     default "rt-thread"
 
+# Package Path
 config $PKGS_DIR
     string
     option env="PKGS_ROOT"
     default "packages"
 
-source "$RTT_DIR/Kconfig"
-source "$PKGS_DIR/Kconfig"
-
+# Config Bsp CPU is ARM CORTEX M4
 config SOC_STM32F469NI
     bool 
     select ARCH_ARM_CORTEX_M4
     default y
 
-menu "STM32 Bsp Config" 
+# RT-Thread Kernel Configuration
+source "$RTT_DIR/Kconfig"
 
-choice
-    prompt "Heap select"
-    default BSP_USING_HEAP_SRAM_SDRAM
-    config BSP_USING_HEAP_SRAM
-        bool "310K sram"
-    config BSP_USING_HEAP_SRAM_SDRAM
-        bool "310K sram + 8MB sdram"
-        select BSP_USING_SDRAM
-endchoice
+# Online Package Configuration
+source "$PKGS_DIR/Kconfig"
 
-menu "Select uart drivers"
-    config BSP_USING_UART1
-        bool "Using uart1"
-        select RT_USING_SERIAL
-        default n    
-
-    config BSP_USING_UART2
-        bool "Using uart2"
-        select RT_USING_SERIAL
-        default n    
-
-    config BSP_USING_UART3
-        bool "Using uart3"
-        select RT_USING_SERIAL
-        default y   
-
-    config BSP_USING_UART6
-        bool "Using uart6"
-        select RT_USING_SERIAL
-        default n   
-endmenu
-
-menu "Select pin drivers"
-    config BSP_USING_PIN
-        bool "Using pin"
-        select RT_USING_PIN
-        default y 
-endmenu
-
-menu "Select i2c bus drivers"
-    config BSP_USING_I2C2
-        bool "Using i2c2(Pin simulation)"
-        select RT_USING_I2C
-        select RT_USING_I2C_BITOPS
-        default n 
-endmenu
-
-menu "Select spi bus drivers"
-    config BSP_USING_SPI1
-        bool "Using spi1 bus"
-        select RT_USING_SPI
-        default n 
-
-    config BSP_USING_SPI2
-        bool "Using spi2 bus"
-        select RT_USING_SPI
-        default n  
-    if BSP_USING_SPI1 || BSP_USING_SPI2
-        config SPI_USING_DMA
-            bool "Enable dma on spi"
-            default y
-    endif
-endmenu
-
-menu "Select sdram drivers"
-    config BSP_USING_SDRAM
-        bool "Using 16mbytes sdram" 
-        default n 
-endmenu
-
-menu "Select audio drivers"
-    config BSP_USING_AUDIO
-        bool "Using audio" 
-        default n 
-        select BSP_USING_I2C2
-endmenu
-
-menu "Select sdcard drivers"
-    config BSP_USING_SDCARD
-        bool "Using sdcard" 
-        default y 
-        select RT_USING_DFS
-
-    choice
-        prompt "Drive type select"
-        default BSP_USING_SDCARD_BLOCK
-        depends on BSP_USING_SDCARD
-
-        config BSP_USING_SDCARD_BLOCK
-            bool "Block type" 
-        config BSP_USING_SDCARD_SDIO_BUS
-            bool "SDIO bus type"
-            select RT_USING_SDIO 
-            select PKG_USING_STM32_SDIO
-    endchoice
-
-    config BSP_USING_SDCARD_MOUNT
-        bool "Enable sdcard mount" 
-        default y 
-        depends on BSP_USING_SDCARD
-    
-    config BSP_USING_SDCARD_PATH_MOUNT
-        string "Path of sdcard mount"
-        default "/mnt/sdcard" 
-        depends on BSP_USING_SDCARD && BSP_USING_SDCARD_MOUNT
-endmenu
-
-menu "Select lcd drivers"
-    config BSP_USING_LCD
-        bool "Using lcd" 
-        default n 
-        select BSP_USING_SDRAM
-endmenu
-
-menu "Select ramdisk drivers"
-    config BSP_USING_RAMDISK
-        bool "Using ramdisk" 
-        default y 
-        select BSP_USING_SDRAM
-
-    config BSP_USING_RAMDISK_SIZE
-        int "Ramdisk size(MB)" 
-        default 4  
-        depends on BSP_USING_RAMDISK 
-
-    config BSP_USING_RAMDISK_MOUNT
-        bool "Enable ramdisk mount" 
-        default y 
-        depends on BSP_USING_RAMDISK
-
-    config BSP_USING_RAMDISK_PATH_MOUNT
-        string "Path of ramdisk mount"
-        default "/mnt/sdram" 
-        depends on BSP_USING_RAMDISK 
-endmenu
-
-menu "Select wifi drivers"
-    config BSP_USING_RW00X
-        bool "Using rw00x wifi driver" 
-        default y 
-        select RT_USING_LWIP
-        select BSP_USING_SPI2
-        select PKG_USING_RW007
-endmenu
-
-endmenu 
+# Bsp board Configuration
+source "$BSP_DIR/board/Kconfig" 

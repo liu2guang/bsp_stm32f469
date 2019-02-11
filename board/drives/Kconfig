@@ -1,0 +1,156 @@
+menu "STM32 Bsp Config" 
+
+config BSP_FORCE_CONFIG
+    bool
+    default y 
+    select RT_USING_DFS
+    select RT_USING_DFS_ROMFS
+    select RT_USING_MEMHEAP
+    select RT_USING_MEMHEAP_AS_HEAP
+
+menu "Uart"
+    config BSP_ENABLE_UART
+        bool "Enable uart drive"
+        select RT_USING_SERIAL
+        default y      
+
+    config BSP_UART_ENABLE_PORT1
+        bool "Enable uart1 port"
+        depends on BSP_ENABLE_UART
+        default n    
+
+    config BSP_UART_ENABLE_PORT2
+        bool "Enable uart2 port"
+        depends on BSP_ENABLE_UART
+        default n    
+
+    config BSP_UART_ENABLE_PORT3
+        bool "Enable uart3 port"
+        depends on BSP_ENABLE_UART
+        default y 
+
+    config BSP_UART_ENABLE_PORT6
+        bool "Enable uart6 port"
+        depends on BSP_ENABLE_UART
+        default n    
+endmenu
+
+menu "PIN"
+    config BSP_ENABLE_PIN
+        bool "Enable pin drive"
+        select RT_USING_PIN
+        default y 
+endmenu
+
+menu "I2C"
+    config BSP_ENABLE_I2C
+        bool "Enable i2c bus drive"
+        select RT_USING_I2C
+        default n   
+
+    config BSP_I2C_ENABLE_PORT4
+        bool "Enable i2c4 port(simulation)"
+        depends on BSP_ENABLE_I2C
+        select RT_USING_I2C_BITOPS
+        default n 
+endmenu
+
+menu "SPI"
+    config BSP_ENABLE_SPI
+        bool "Enable spi bus drive"
+        select RT_USING_SPI
+        default n 
+
+    config BSP_SPI_ENABLE_DMA
+        bool "Enable dma mode"
+        depends on BSP_ENABLE_SPI
+        default n
+
+    config BSP_SPI_ENABLE_PORT1
+        bool "Enable spi1 bus port"
+        depends on BSP_ENABLE_SPI
+        default n 
+
+    config BSP_SPI_ENABLE_PORT2
+        bool "Enable spi2 bus port"
+        depends on BSP_ENABLE_SPI
+        default n  
+endmenu
+
+menu "Audio"
+    config BSP_ENABLE_AUDIO
+        bool "Enable audio drive" 
+        default n 
+        select BSP_ENABLE_I2C 
+        select BSP_I2C_ENABLE_PORT4 
+endmenu
+
+menu "LCD"
+    config BSP_ENABLE_LCD
+        bool "Enable lcd drive" 
+        default n 
+endmenu
+
+menu "SDCRAD"
+    config BSP_ENABLE_SDCARD
+        bool "Enable sdcard drive" 
+        default y 
+        select RT_USING_DFS
+        select RT_USING_DFS_ELMFAT
+
+    choice
+        prompt "Drive type select"
+        default BSP_SDCARD_USING_BLOCK
+        depends on BSP_ENABLE_SDCARD
+
+        config BSP_SDCARD_USING_SDIO
+            bool "SDIO"
+            select RT_USING_SDIO 
+            select PKG_USING_STM32_SDIO
+        config BSP_SDCARD_USING_BLOCK
+            bool "BLOCK" 
+    endchoice
+
+    config BSP_SDCARD_ENABLE_AUTO_MOUNT
+        bool "Enable sdcard auto mount mode" 
+        default y 
+        depends on BSP_ENABLE_SDCARD
+    
+    config BSP_SDCARD_CONFIG_MOUNT_POINT
+        string "Mount point"
+        default "/mnt/sdcard" 
+        depends on BSP_SDCARD_ENABLE_AUTO_MOUNT
+endmenu
+
+menu "Ramdisk"
+    config BSP_ENABLE_RAMDISK
+        bool "Enable ramdisk drive" 
+        default y 
+
+    config BSP_RAMDISK_CONFIG_SIZE
+        int "Ramdisk size(MB)" 
+        default 4  
+        depends on BSP_USING_RAMDISK 
+
+    config BSP_RAMDISK_ENABLE_AUTO_MOUNT
+        bool "Enable ramdisk auto mount mode"
+        default y 
+        depends on BSP_USING_RAMDISK
+
+    config BSP_RAMDISK_CONFIG_MOUNT_POINT
+        string "Mount point"
+        default "/mnt/sdram" 
+        depends on BSP_RAMDISK_ENABLE_AUTO_MOUNT
+endmenu
+
+menu "WIFI"
+    config BSP_ENABLE_WIFI
+        bool "Enable wifi drive" 
+        default y 
+        select RT_USING_LWIP
+        select BSP_ENABLE_SPI
+        select BSP_SPI_ENABLE_PORT2
+        select PKG_USING_RW007
+endmenu
+
+endmenu 

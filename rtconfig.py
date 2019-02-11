@@ -15,21 +15,21 @@ if os.getenv('RTT_CC'):
 # cross_tool provides the cross compiler
 # EXEC_PATH is the compiler execute path, for example, CodeSourcery, Keil MDK, IAR
 if  CROSS_TOOL  == 'gcc':
-	PLATFORM 	= 'gcc'
-	EXEC_PATH 	= 'D:/ArdaArmTools/GNUARM_4.9_2015q1/bin'
+	PLATFORM 	 = 'gcc'
+	EXEC_PATH 	 = 'D:/ArdaArmTools/GNUARM_4.9_2015q1/bin'
 elif CROSS_TOOL == 'keil':
-	PLATFORM 	= 'armcc'
-	EXEC_PATH 	= 'C:/Keil_v5'
+	PLATFORM 	 = 'armcc'
+	EXEC_PATH 	 = 'C:/Keil_v5'
 elif CROSS_TOOL == 'iar':
-	PLATFORM 	= 'iar'
-	EXEC_PATH 	= 'C:/Program Files (x86)/IAR Systems/Embedded Workbench 7.2'
+	PLATFORM 	 = 'iar'
+	EXEC_PATH 	 = 'C:/Program Files (x86)/IAR Systems/Embedded Workbench 7.2'
 
 if os.getenv('RTT_EXEC_PATH'):
 	EXEC_PATH = os.getenv('RTT_EXEC_PATH')
 
 BUILD = 'debug' #release
 
-os.system("python rt-thread/tools/mkromfs.py drivers/romfs/ drivers/drv_romfs.c")
+os.system("python rt-thread/tools/mkromfs.py board/romfs/ board/drives/romfs/drv_romfs.c")
 
 if PLATFORM == 'gcc':
     # tool-chains
