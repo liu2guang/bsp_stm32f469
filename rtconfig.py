@@ -46,7 +46,7 @@ if PLATFORM == 'gcc':
     DEVICE = ' -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections'
     CFLAGS = DEVICE + ' -std=c99'
     AFLAGS = ' -c' + DEVICE + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
-    LFLAGS = DEVICE + ' -Wl,--gc-sections,-Map=rtthread.map,-cref,-u,Reset_Handler -T drivers/linker_scripts/link.lds'
+    LFLAGS = DEVICE + ' -Wl,--gc-sections,-Map=rtthread.map,-cref,-u,Reset_Handler -T board/linker_scripts/link.lds'
 
     CPATH = ''
     LPATH = ''
@@ -70,7 +70,7 @@ elif PLATFORM == 'armcc':
     DEVICE = ' --cpu Cortex-M4.fp '
     CFLAGS = '-c ' + DEVICE + ' --apcs=interwork --c99' # -D' + PART_TYPE
     AFLAGS = DEVICE + ' --apcs=interwork '
-    LFLAGS = DEVICE + ' --scatter "drivers\linker_scripts\link.sct" --info sizes --info totals --info unused --info veneers --list rtthread.map --strict'
+    LFLAGS = DEVICE + ' --scatter "board\linker_scripts\link.sct" --info sizes --info totals --info unused --info veneers --list rtthread.map --strict'
 
     CFLAGS += ' -I' + EXEC_PATH + '/ARM/ARMCC/INC'
     LFLAGS += ' --libpath ' + EXEC_PATH + '/ARM/ARMCC/LIB'
@@ -129,7 +129,7 @@ elif PLATFORM == 'iar':
     else:
         CFLAGS += ' -Oh'    	
 	
-    LFLAGS = ' --config "drivers/linker_scripts/link.icf"'
+    LFLAGS = ' --config "board/linker_scripts/link.icf"'
     LFLAGS += ' --entry __iar_program_start'    
     #LFLAGS += ' --silent'
 	

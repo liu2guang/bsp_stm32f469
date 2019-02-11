@@ -47,7 +47,7 @@ LOCAL_CPPPATH    = []
 LOCAL_CCFLAGS    = "" 
 LOCAL_ASFLAGS    = ""
 
-CPPPATH          = ["./"] 
+CPPPATH          = [GetCurrentDir()] 
 CCFLAGS          = "" 
 ASFLAGS          = ""
 

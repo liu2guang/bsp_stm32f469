@@ -7,8 +7,8 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
-#include <stm32f4xx.h>
-#include <stm32f4xx_hal.h>
+#include "stm32f4xx.h"
+#include "stm32f4xx_hal.h"
 
 /* STM32F469NI-Discovery Board drivers */ 
 
