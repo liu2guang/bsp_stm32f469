@@ -102,6 +102,8 @@
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 
@@ -231,7 +233,10 @@
 /* Uart */
 
 #define BSP_ENABLE_UART
+#define BSP_UART_ENABLE_PORT1
+#define BSP_UART_ENABLE_PORT2
 #define BSP_UART_ENABLE_PORT3
+#define BSP_UART_ENABLE_PORT6
 
 /* PIN */
 
@@ -239,17 +244,23 @@
 
 /* I2C */
 
+#define BSP_ENABLE_I2C
+#define BSP_I2C_ENABLE_PORT4
 
 /* SPI */
 
 #define BSP_ENABLE_SPI
+#define BSP_SPI_ENABLE_DMA
+#define BSP_SPI_ENABLE_PORT1
 #define BSP_SPI_ENABLE_PORT2
 
 /* Audio */
 
+#define BSP_ENABLE_AUDIO
 
 /* LCD */
 
+#define BSP_ENABLE_LCD
 
 /* SDCRAD */
 

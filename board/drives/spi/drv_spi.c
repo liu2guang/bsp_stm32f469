@@ -487,10 +487,10 @@ rt_err_t stm32_spi_bus_attach_device(rt_uint32_t pin, const char *bus_name, cons
 int stm32_hw_spi_init(void)
 {
     int result = 0;
-#ifdef BSP_USING_SPI1
+#ifdef BSP_SPI_ENABLE_PORT1
     result = stm32_spi_register_bus(SPI1, "spi1");
 #endif
-#ifdef BSP_USING_SPI2
+#ifdef BSP_SPI_ENABLE_PORT2
     result = stm32_spi_register_bus(SPI2, "spi2");
 #endif
     return result;
