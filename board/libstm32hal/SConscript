@@ -48,7 +48,7 @@ LOCAL_CPPPATH    = []
 LOCAL_CCFLAGS    = "" 
 LOCAL_ASFLAGS    = ""
 
-CPPPATH          = [] 
+CPPPATH          = ["./"] 
 CCFLAGS          = "" 
 ASFLAGS          = ""
 

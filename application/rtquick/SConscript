@@ -15,7 +15,7 @@ Import('rtconfig')
 #---------------------------------------------------------------------------------
 # Package configuration
 #---------------------------------------------------------------------------------
-PKGNAME = "Application"
+PKGNAME = "rtquick"
 VERSION = "1.0.0"
 DEPENDS = [""]
 
@@ -41,7 +41,7 @@ DEPENDS = [""]
 #
 # LINKFLAGS: Link options
 #---------------------------------------------------------------------------------
-SOURCES          = [] + Glob('*.c')
+SOURCES          = ["rtquick_init.c", "rtquick_utils.c", "rtquick_mnt.c", "rtquick_wifi.c"] 
 
 LOCAL_CPPPATH    = [] 
 LOCAL_CCFLAGS    = "" 

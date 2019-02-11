@@ -47,7 +47,7 @@ LOCAL_CPPPATH    = []
 LOCAL_CCFLAGS    = "" 
 LOCAL_ASFLAGS    = ""
 
-CPPPATH          = [GetCurrentDir()] 
+CPPPATH          = [os.path.join(GetCurrentDir(), 'romfs'), os.path.join(GetCurrentDir(), 'sdram')] 
 CCFLAGS          = "" 
 ASFLAGS          = ""
 
@@ -64,34 +64,43 @@ LINKFLAGS        = ""
 #---------------------------------------------------------------------------------
 
 if GetDepend(['BSP_ENABLE_UART']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'uart')] 
     SOURCES += ['uart/drv_usart.c']
 
 if GetDepend(['BSP_ENABLE_PIN']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'pin')] 
     SOURCES += ['pin/drv_gpio.c']
 
 if GetDepend(['BSP_ENABLE_I2C']):
-	SOURCES += ['i2c/drv_i2c.c']
+    CPPPATH += [os.path.join(GetCurrentDir(), 'i2c')] 
+    SOURCES += ['i2c/drv_i2c.c']
 
 if GetDepend(['BSP_ENABLE_SPI']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'spi')] 
     SOURCES += ['spi/drv_spi.c']
 
 if GetDepend(['BSP_ENABLE_AUDIO']):
     CPPPATH += [os.path.join(GetCurrentDir(), 'audio')]
     SOURCES += ['audio/audio_device.c', 'audio/drv_codec.c', 'audio/drv_cs43l22.c'] 
 
-    if GetDepend(['BSP_ENABLE_LCD']):
-        SOURCES += ['lcd/drv_lcd.c']
+if GetDepend(['BSP_ENABLE_LCD']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'lcd')] 
+    SOURCES += ['lcd/drv_lcd.c']
 
 if GetDepend(['BSP_ENABLE_SDCARD']):
     if GetDepend(["BSP_SDCARD_USING_SDIO"]): 
+        CPPPATH += [os.path.join(GetCurrentDir(), 'sdio')] 
         SOURCES += ['sdio/drv_sdio_adapter.c']
     if GetDepend(["BSP_SDCARD_USING_BLOCK"]):
+        CPPPATH += [os.path.join(GetCurrentDir(), 'sdcard')] 
         SOURCES += ['sdcard/drv_sdcard.c']
 
 if GetDepend(['BSP_ENABLE_USBD']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'usb')] 
     SOURCES += ['usb/drv_usbd.c']
 
 if GetDepend(['BSP_ENABLE_USBH']):
+    CPPPATH += [os.path.join(GetCurrentDir(), 'usb')] 
     SOURCES += ['usb/drv_usbh.c'] 
 
 #---------------------------------------------------------------------------------
