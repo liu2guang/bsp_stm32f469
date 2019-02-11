@@ -5,10 +5,11 @@
 /* RT-Thread Configuration */
 
 #define RTT_DIR "rt-thread"
+#define SOC_STM32F469NI
 
 /* RT-Thread Kernel */
 
-#define RT_NAME_MAX 12
+#define RT_NAME_MAX 8
 #define RT_ALIGN_SIZE 4
 #define RT_THREAD_PRIORITY_32
 #define RT_THREAD_PRIORITY_MAX 32
@@ -61,7 +62,7 @@
 #define RT_USING_FINSH
 #define FINSH_THREAD_NAME "tshell"
 #define FINSH_USING_HISTORY
-#define FINSH_HISTORY_LINES 5
+#define FINSH_HISTORY_LINES 10
 #define FINSH_USING_SYMTAB
 #define FINSH_USING_DESCRIPTION
 #define FINSH_THREAD_PRIORITY 20
@@ -69,14 +70,15 @@
 #define FINSH_CMD_SIZE 80
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
+#define FINSH_USING_MSH_ONLY
 #define FINSH_ARG_MAX 10
 
 /* Device virtual file system */
 
 #define RT_USING_DFS
 #define DFS_USING_WORKDIR
-#define DFS_FILESYSTEMS_MAX 6
-#define DFS_FILESYSTEM_TYPES_MAX 6
+#define DFS_FILESYSTEMS_MAX 4
+#define DFS_FILESYSTEM_TYPES_MAX 4
 #define DFS_FD_MAX 16
 #define RT_USING_DFS_ELMFAT
 
@@ -87,8 +89,8 @@
 #define RT_DFS_ELM_USE_LFN_3
 #define RT_DFS_ELM_USE_LFN 3
 #define RT_DFS_ELM_MAX_LFN 255
-#define RT_DFS_ELM_DRIVES 4
-#define RT_DFS_ELM_MAX_SECTOR_SIZE 4096
+#define RT_DFS_ELM_DRIVES 2
+#define RT_DFS_ELM_MAX_SECTOR_SIZE 512
 #define RT_DFS_ELM_REENTRANT
 #define RT_USING_DFS_DEVFS
 #define RT_USING_DFS_ROMFS
@@ -100,8 +102,6 @@
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
-#define RT_USING_I2C
-#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_SPI
 
@@ -110,15 +110,10 @@
 
 /* Using USB */
 
-#define RT_USING_USB_HOST
-#define RT_USBH_MSTORAGE
-#define UDISK_MOUNTPOINT "/mnt/usbdisk"
-#define RT_USBD_THREAD_STACK_SZ 4096
 
 /* POSIX layer and C standard library */
 
 #define RT_USING_LIBC
-#define RT_USING_PTHREADS
 #define RT_USING_POSIX
 
 /* Network */
@@ -225,87 +220,50 @@
 
 /* miscellaneous packages */
 
-#define PKG_USING_OPTPARSE
-#define PKG_USING_OPTPARSE_V100
 
 /* samples: kernel and components samples */
 
-#define PKG_USING_VI
-#define VI_MAX_LEN 4096
-#define VI_ENABLE_COLON
-#define VI_ENABLE_YANKMARK
-#define VI_ENABLE_SEARCH
-#define VI_ENABLE_DOT_CMD
-#define VI_ENABLE_READONLY
-#define VI_ENABLE_SETOPTS
-#define VI_ENABLE_SET
-#define VI_ENABLE_VI_ASK_TERMINAL
-#define VI_ENABLE_UNDO
-#define VI_ENABLE_UNDO_QUEUE
-#define VI_UNDO_QUEUE_MAX 256
-#define PKG_USING_VI_LATEST_VERSION
-
-/* Privated Packages of RealThread */
-
-
-/* Network Utilities */
-
-
-/* rtpkgs online packages */
-
-#define PKG_USING_LIBSTM32HAL
-#define PKG_USING_LIBSTM32HAL_V010
-#define LIBSTM32HAL_USING_STATIC_LIB
-#define SOC_STM32F469NI
 
 /* STM32 Bsp Config */
 
-#define BSP_USING_HEAP_SRAM_SDRAM
+#define BSP_FORCE_CONFIG
 
-/* Select uart drivers */
+/* Uart */
 
-#define BSP_USING_UART3
+#define BSP_ENABLE_UART
+#define BSP_UART_ENABLE_PORT3
 
-/* Select pin drivers */
+/* PIN */
 
-#define BSP_USING_PIN
+#define BSP_ENABLE_PIN
 
-/* Select i2c bus drivers */
-
-#define BSP_USING_I2C2
-
-/* Select spi bus drivers */
-
-#define BSP_USING_SPI2
-#define SPI_USING_DMA
-
-/* Select sdram drivers */
-
-#define BSP_USING_SDRAM
-
-/* Select audio drivers */
-
-#define BSP_USING_AUDIO
-
-/* Select sdcard drivers */
-
-#define BSP_USING_SDCARD
-#define BSP_USING_SDCARD_BLOCK
-#define BSP_USING_SDCARD_MOUNT
-#define BSP_USING_SDCARD_PATH_MOUNT "/mnt/sdcard"
-
-/* Select lcd drivers */
+/* I2C */
 
 
-/* Select ramdisk drivers */
+/* SPI */
 
-#define BSP_USING_RAMDISK
-#define BSP_USING_RAMDISK_SIZE 4
-#define BSP_USING_RAMDISK_MOUNT
-#define BSP_USING_RAMDISK_PATH_MOUNT "/mnt/sdram"
+#define BSP_ENABLE_SPI
+#define BSP_SPI_ENABLE_PORT2
 
-/* Select wifi drivers */
+/* Audio */
 
-#define BSP_USING_RW00X
+
+/* LCD */
+
+
+/* SDCRAD */
+
+#define BSP_ENABLE_SDCARD
+#define BSP_SDCARD_USING_BLOCK
+#define BSP_SDCARD_ENABLE_AUTO_MOUNT
+#define BSP_SDCARD_CONFIG_MOUNT_POINT "/mnt/sdcard"
+
+/* Ramdisk */
+
+#define BSP_ENABLE_RAMDISK
+
+/* WIFI */
+
+#define BSP_ENABLE_WIFI
 
 #endif
