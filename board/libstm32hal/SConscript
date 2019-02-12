@@ -72,9 +72,10 @@ if LIBSTM32HAL_USING_STATIC_LIB == True:
         LIBS    += ["libstm32hal_f469_armcc"]
         LIBPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f469_armcc"] 
         CPPPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f469_armcc"] 
-    else: 
-        SOURCES += Glob('libstm32hal/libstm32hal_f4xx/*.c')
-        CPPPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f4xx"] 
+    if rtconfig.CROSS_TOOL == "gcc" and GetDepend(['SOC_STM32F469NI']) == True: 
+        LIBS    += ["libstm32hal_f469_gcc"]
+        LIBPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f469_gcc"] 
+        CPPPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f469_gcc"] 
 else:
     SOURCES += Glob('libstm32hal/libstm32hal_f4xx/*.c')
     CPPPATH += [GetCurrentDir() + "/libstm32hal/libstm32hal_f4xx"] 
