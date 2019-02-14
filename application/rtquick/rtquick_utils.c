@@ -8,9 +8,6 @@
 #include "rtdevice.h" 
 #include "board.h" 
 
-extern rt_err_t rtquick_mnt_init(void); 
-extern rt_err_t rtquick_wifi_init(void); 
-
 int reboot(void)
 {
     NVIC_SystemReset(); 

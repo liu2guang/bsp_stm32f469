@@ -449,7 +449,7 @@ static rt_err_t audio_codec_control(rt_device_t dev, int cmd, void *args)
     {
         rt_uint32_t volume = *(rt_uint32_t *)args;
 
-        rt_kprintf("set volume %d \n", volume);
+        // rt_kprintf("set volume %d \n", volume);
 
         cs43l22_set_volume((rt_uint8_t)volume); 
         break;
@@ -458,7 +458,7 @@ static rt_err_t audio_codec_control(rt_device_t dev, int cmd, void *args)
     case CODEC_CMD_SAMPLERATE:
     {
         rt_uint32_t freq = *(rt_uint32_t *)args;
-
+ 
         rt_kprintf("set  dac sample rate %d \n", freq);
         
         /* Todo: 设置波特率 */ 

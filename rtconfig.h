@@ -67,7 +67,7 @@
 #define FINSH_USING_DESCRIPTION
 #define FINSH_THREAD_PRIORITY 20
 #define FINSH_THREAD_STACK_SIZE 4096
-#define FINSH_CMD_SIZE 80
+#define FINSH_CMD_SIZE 256
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
 #define FINSH_USING_MSH_ONLY
@@ -181,6 +181,10 @@
 
 /* IoT - internet of things */
 
+#define PKG_USING_WEBCLIENT
+#define PKG_USING_WEBCLIENT_V100
+#define PKG_USING_CJSON
+#define PKG_USING_CJSON_V102
 
 /* Wi-Fi */
 
@@ -222,6 +226,8 @@
 
 /* miscellaneous packages */
 
+#define PKG_USING_OPTPARSE
+#define PKG_USING_OPTPARSE_V100
 
 /* samples: kernel and components samples */
 

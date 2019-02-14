@@ -7,7 +7,12 @@
 
 int main(void)
 {   
-    rtquick_init(); 
+    rtquick_init();
+    
+#if defined(PKG_USING_PLAYER)
+    extern int kanime_init(void)
+    kanime_init(); 
+#endif 
 
     return 0; 
 }
