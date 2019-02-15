@@ -255,45 +255,6 @@
 /* samples: kernel and components samples */
 
 
-/* Privated Packages of RealThread */
-
-#define PKG_USING_CODEC
-#define PKG_USING_CODEC_V110
-#define CODEC_USING_HELIX_MP3
-#define PKG_USING_PLAYER
-#define PKG_USING_PLAYER_V122
-#define PLAYER_ENABLE_NET_STREAM
-#define PLAYER_USING_NETSTREAM_BUFSZ 720
-#define PLAYER_USING_EXAMPLE00
-
-/* examples */
-
-/* Audio codec configuration */
-
-#define PLAYER_ENABLE_CODEC_WAV
-#define PLAYER_ENABLE_CODEC_MP3
-
-/* Net related configuration */
-
-/* Application configuration */
-
-
-/* Network Utilities */
-
-#define PKG_USING_NGHTTP2
-#define NGHTTP2_USING_TLS
-#define NGHTTP2_DEBUG
-#define NGHTTP2_USING_SAMPLES
-#define PKG_USING_NGHTTP2_LATEST_VERSION
-#define PKG_USING_AVS
-#define AVS_ENDPOINT_EU
-#define AVS_ENDPOINT "https://avs-alexa-eu.amazon.com"
-#define AVS_LOCALE_EN_GB
-#define AVS_LOCALE "en-GB"
-#define AVS_REFRESH_TOKEN "Atzr|IwEBIB6j9521vdc2BpR6ux-w2aMHIxcjYqYsQGEc4bY9mOmQGojDHU1RRSucqHa5_oNtJown5f5gkFyAGEp0jOa8jsvYx7WLgalobbW-Ab8TiCRKLOA0heBET1pHMEKb_dq0M8j-JczYOSLm8GGmaDqZL6rVxun5C7vXJzRYFgRH2JflxPG_utwi4Xl1ZK0KitjzfjWpwfbwrOmt8wnE4ihi5_ueVfKWORMksrRDQ-TUhiz9o1rVOEsYKenDJzTPMtrsC2KXJpIN7fyc-0SmWcxOmpViVQm-O5YLklAFXFruwgHFw6Ww7gXdgVAmVE1KmtWKIoqAnOGIZi3ICHwPYf5OSTcE3I6N9c3a5kfZ21-mdTI6bcmEvGuNmSIshhS1zArdfifE9ljsyKA0xgJVlnqxvQA4s9zD35LAtuFcTimlI_pGVukMLSPxdwvIAnqq3wUsGDmyw-jLJ8WBPKek37Uspn8Ir4jRDuTzLzMOU2KttMCYKFPP0p3kXS0u2TnzvQyAR4AwM4hJ7dDm8SCBMhyHeImZ12tDb_ZxB9tduscfVFuXZA"
-#define AVS_DEBUG
-#define PKG_USING_AVS_LATEST_VERSION
-
 /* STM32 Bsp Config */
 
 #define BSP_FORCE_CONFIG
@@ -350,7 +311,5 @@
 /* Kanime: an anime music FM */
 
 #define APP_ENABLE_KANIME
-
-#define LWIP_TCP_KEEPALIVE 1
 
 #endif
