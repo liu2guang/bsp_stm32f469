@@ -18,7 +18,7 @@ rt_err_t rtquick_audio_init(void)
     player_system_init();
     
     void audio_device_set_volume(int value); 
-    audio_device_set_volume(60);
+    audio_device_set_volume(80);
 
     return ret; 
 }

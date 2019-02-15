@@ -41,7 +41,8 @@ DEPENDS = [""]
 #
 # LINKFLAGS: Link options
 #---------------------------------------------------------------------------------
-SOURCES          = ["rtquick_init.c", "rtquick_audio.c", "rtquick_utils.c", "rtquick_mnt.c", "rtquick_wifi.c"] 
+SOURCES          = ["rtquick_init.c", "rtquick_audio.c", "rtquick_utils.c", 
+                    "rtquick_mnt.c", "rtquick_wifi.c", "rtquick_button.c"] 
 
 LOCAL_CPPPATH    = [] 
 LOCAL_CCFLAGS    = "" 

@@ -228,6 +228,11 @@
 
 #define PKG_USING_OPTPARSE
 #define PKG_USING_OPTPARSE_V100
+#define PKG_USING_MULTIBUTTON
+#define PKG_USING_MULTIBUTTON_V102
+
+/* MultiButton Options */
+
 
 /* samples: kernel and components samples */
 
@@ -282,5 +287,11 @@
 /* WIFI */
 
 #define BSP_ENABLE_WIFI
+
+/* STM32 App Config */
+
+/* Kanime: an anime music FM */
+
+#define APP_ENABLE_KANIME
 
 #endif

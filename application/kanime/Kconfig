@@ -1,0 +1,11 @@
+menu "Kanime: an anime music FM"
+    config APP_ENABLE_KANIME
+        bool "Enable kanime app" 
+        default n 
+        select PKG_USING_PLAYER
+        select PLAYER_ENABLE_CODEC_WAV
+        select PLAYER_ENABLE_CODEC_MP3
+        select PLAYER_ENABLE_NET_STREAM
+        select PKG_USING_CJSON
+        select PKG_USING_WEBCLIENT
+endmenu

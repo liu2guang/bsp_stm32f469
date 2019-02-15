@@ -1,0 +1,7 @@
+menu "STM32 App Config" 
+
+#source "$BSP_DIR/application/rtquick/Kconfig" 
+source "$BSP_DIR/application/kanime/Kconfig" 
+#source "$BSP_DIR/application/knetease/Kconfig" 
+
+endmenu 

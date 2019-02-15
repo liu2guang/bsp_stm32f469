@@ -17,7 +17,7 @@ Import('rtconfig')
 #---------------------------------------------------------------------------------
 PKGNAME = "kanime"
 VERSION = "1.0.0"
-DEPENDS = ["PKG_USING_PLAYER"] 
+DEPENDS = ["APP_ENABLE_KANIME"] 
 
 #---------------------------------------------------------------------------------
 # Compile the configuration 

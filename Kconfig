@@ -31,3 +31,6 @@ source "$PKGS_DIR/Kconfig"
 
 # Bsp board Configuration
 source "$BSP_DIR/board/Kconfig" 
+
+# Bsp application Configuration
+source "$BSP_DIR/application/Kconfig" 

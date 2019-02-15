@@ -9,8 +9,8 @@ int main(void)
 {   
     rtquick_init();
     
-#if defined(PKG_USING_PLAYER)
-    extern int kanime_init(void)
+#if defined(APP_ENABLE_KANIME)
+    extern int kanime_init(void); 
     kanime_init(); 
 #endif 
 

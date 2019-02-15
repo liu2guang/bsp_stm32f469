@@ -11,6 +11,7 @@ extern rt_err_t rtquick_utils_init(void);
 extern rt_err_t rtquick_mnt_init(void); 
 extern rt_err_t rtquick_wifi_init(void); 
 extern rt_err_t rtquick_audio_init(void); 
+extern rt_err_t rtquick_button_init(void); 
 
 rt_err_t rtquick_init(void)
 {
@@ -25,6 +26,10 @@ rt_err_t rtquick_init(void)
 
 #if defined(PKG_USING_PLAYER)
     rtquick_audio_init(); 
+#endif 
+
+#if defined(PKG_USING_MULTIBUTTON)
+    rtquick_button_init(); 
 #endif 
 
     return ret; 
