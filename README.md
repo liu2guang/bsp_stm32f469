@@ -1,6 +1,6 @@
 #  STM32F469NI
 
-道路千万条，安全第一条；行车不规范，亲人两行泪
+[![Build Status](https://www.travis-ci.org/liu2guang/bsp_stm32f469.svg?branch=master)](https://www.travis-ci.org/liu2guang/bsp_stm32f469)
 
 ![STM32F469NI](https://i.imgur.com/4YN7mOR.png)
 
