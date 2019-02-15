@@ -66,7 +66,7 @@
 #define FINSH_USING_SYMTAB
 #define FINSH_USING_DESCRIPTION
 #define FINSH_THREAD_PRIORITY 20
-#define FINSH_THREAD_STACK_SIZE 4096
+#define FINSH_THREAD_STACK_SIZE 8192
 #define FINSH_CMD_SIZE 256
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
@@ -105,6 +105,7 @@
 #define RT_USING_I2C
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
+#define RT_USING_RTC
 #define RT_USING_SPI
 
 /* Using WiFi */
@@ -122,6 +123,14 @@
 
 /* Socket abstraction layer */
 
+#define RT_USING_SAL
+
+/* protocol stack implement */
+
+#define SAL_USING_LWIP
+#define SAL_USING_TLS
+#define SAL_USING_POSIX
+#define SAL_PROTO_FAMILIES_NUM 4
 
 /* light weight TCP/IP stack */
 
@@ -208,6 +217,15 @@
 
 /* security packages */
 
+#define PKG_USING_MBEDTLS
+
+/* Select Root Certificate */
+
+#define PKG_USING_MBEDTLS_AMAZON_ROOT_CA
+#define MBEDTLS_AES_ROM_TABLES
+#define MBEDTLS_ECP_WINDOW_SIZE 2
+#define MBEDTLS_SSL_MAX_CONTENT_LEN 7200
+#define PKG_USING_MBEDTLS_V260
 
 /* language packages */
 
@@ -236,6 +254,45 @@
 
 /* samples: kernel and components samples */
 
+
+/* Privated Packages of RealThread */
+
+#define PKG_USING_CODEC
+#define PKG_USING_CODEC_V110
+#define CODEC_USING_HELIX_MP3
+#define PKG_USING_PLAYER
+#define PKG_USING_PLAYER_V122
+#define PLAYER_ENABLE_NET_STREAM
+#define PLAYER_USING_NETSTREAM_BUFSZ 720
+#define PLAYER_USING_EXAMPLE00
+
+/* examples */
+
+/* Audio codec configuration */
+
+#define PLAYER_ENABLE_CODEC_WAV
+#define PLAYER_ENABLE_CODEC_MP3
+
+/* Net related configuration */
+
+/* Application configuration */
+
+
+/* Network Utilities */
+
+#define PKG_USING_NGHTTP2
+#define NGHTTP2_USING_TLS
+#define NGHTTP2_DEBUG
+#define NGHTTP2_USING_SAMPLES
+#define PKG_USING_NGHTTP2_LATEST_VERSION
+#define PKG_USING_AVS
+#define AVS_ENDPOINT_EU
+#define AVS_ENDPOINT "https://avs-alexa-eu.amazon.com"
+#define AVS_LOCALE_EN_GB
+#define AVS_LOCALE "en-GB"
+#define AVS_REFRESH_TOKEN "Atzr|IwEBIB6j9521vdc2BpR6ux-w2aMHIxcjYqYsQGEc4bY9mOmQGojDHU1RRSucqHa5_oNtJown5f5gkFyAGEp0jOa8jsvYx7WLgalobbW-Ab8TiCRKLOA0heBET1pHMEKb_dq0M8j-JczYOSLm8GGmaDqZL6rVxun5C7vXJzRYFgRH2JflxPG_utwi4Xl1ZK0KitjzfjWpwfbwrOmt8wnE4ihi5_ueVfKWORMksrRDQ-TUhiz9o1rVOEsYKenDJzTPMtrsC2KXJpIN7fyc-0SmWcxOmpViVQm-O5YLklAFXFruwgHFw6Ww7gXdgVAmVE1KmtWKIoqAnOGIZi3ICHwPYf5OSTcE3I6N9c3a5kfZ21-mdTI6bcmEvGuNmSIshhS1zArdfifE9ljsyKA0xgJVlnqxvQA4s9zD35LAtuFcTimlI_pGVukMLSPxdwvIAnqq3wUsGDmyw-jLJ8WBPKek37Uspn8Ir4jRDuTzLzMOU2KttMCYKFPP0p3kXS0u2TnzvQyAR4AwM4hJ7dDm8SCBMhyHeImZ12tDb_ZxB9tduscfVFuXZA"
+#define AVS_DEBUG
+#define PKG_USING_AVS_LATEST_VERSION
 
 /* STM32 Bsp Config */
 
@@ -293,5 +350,7 @@
 /* Kanime: an anime music FM */
 
 #define APP_ENABLE_KANIME
+
+#define LWIP_TCP_KEEPALIVE 1
 
 #endif

@@ -1,9 +1,5 @@
 #  STM32F469NI
 
-[![Build Status](https://www.travis-ci.org/liu2guang/bsp_stm32f469.svg?branch=master)](https://www.travis-ci.org/liu2guang/bsp_stm32f469)
-
-![STM32F469NI](https://i.imgur.com/4YN7mOR.png)
-
 ## 1. 简介
 
 该 BSP 是基于官方的 STM32F469IDISCOVERY探索板 定制开发, 具备以下简要的特性：
@@ -14,6 +10,8 @@
 | 最高频率 | 214MHz |
 | 内部存储器 | 2MB Flash 384KB+4KB RAM |
 | 外部存储器 | 16MB 32bit SDRAM 8MB QSPI |
+
+![STM32F469NI](https://i.imgur.com/4YN7mOR.png)
 
 ## 2. 编译说明
 
