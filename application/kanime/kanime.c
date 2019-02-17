@@ -31,6 +31,9 @@ struct kanime_music
 }; 
 typedef struct kanime_music* kanime_music_t; 
 
+/* 当前播放歌曲信息 */ 
+static kanime_music_t music = RT_NULL; 
+
 static kanime_music_t kanime_json_parse(const char *json)
 {
     kanime_music_t music = RT_NULL; 
@@ -199,7 +202,6 @@ static rt_err_t kanime_randomplay_music(void)
     int offset  = (-1);
     int residue = (-1);
     char *resp_buff = RT_NULL;
-    kanime_music_t music = RT_NULL;
 
     session = webclient_open(Kanime_PlayMusic);
     if (session == RT_NULL)
@@ -253,13 +255,7 @@ static rt_err_t kanime_randomplay_music(void)
     player_set_uri(music->url); 
     player_play(); 
 
-_ret:
-    if(music != RT_NULL)
-    {
-        kanime_free(music); 
-        music = RT_NULL; 
-    }
-    
+_ret:    
     if(session != RT_NULL)
     {
         webclient_close(session);
@@ -289,6 +285,13 @@ static void kanime_run(void *p)
         while(player_get_state() != PLAYER_STAT_STOPPED)
         {
             rt_thread_mdelay(1000);
+        }
+
+        /* 释放上一次随机播放的歌曲, 如果为空则上传分配失败 */ 
+        if(music != RT_NULL)
+        {
+            kanime_free(music); 
+            music = RT_NULL;         
         }
     }
 }
