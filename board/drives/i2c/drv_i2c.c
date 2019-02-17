@@ -27,6 +27,7 @@
 #include <rtdevice.h>
 #include "drv_i2c.h"
 #include <board.h>
+
 /*user can change this*/
 #define I2C_BUS_NAME  "i2c2"
 /*user should change this to adapt specific board*/
