@@ -256,16 +256,16 @@ static rt_err_t kanime_randomplay_music(void)
     player_play(); 
 
 _ret:    
-    if(session != RT_NULL)
-    {
-        webclient_close(session);
-        session = RT_NULL; 
-    }
-
     if(resp_buff != RT_NULL)
     {
         rt_free(resp_buff);
         resp_buff = RT_NULL; 
+    }
+
+    if(session != RT_NULL)
+    {
+        webclient_close(session);
+        session = RT_NULL; 
     }
 
     return ret;
@@ -273,9 +273,9 @@ _ret:
 
 static void kanime_run(void *p)
 {
-    LOG_D("kanime thread start run."); 
+    LOG_I("kanime thread start run."); 
     
-    while (1)
+    while(1)
     {
         /* 随机播放歌曲 */ 
         LOG_I("kanime random play next music.");

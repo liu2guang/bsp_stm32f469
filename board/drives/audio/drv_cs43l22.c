@@ -380,7 +380,7 @@ rt_err_t cs43l22_init(const char *i2c_name, rt_int8_t pin, rt_uint8_t addr, rt_u
     /* If the Speaker is enabled, set the Mono mode and volume attenuation level */
     if(output != cs43l22_output_headphone) 
     {
-        reg_write(CS43L22_REG(0x0F), 0x06);     /* Set the Speaker Mono mode */
+        reg_write(CS43L22_REG(0x0F), 0x01);     /* Set the Speaker Mono mode */
         reg_write(CS43L22_REG(0x24), 0x00);     /* Set the Speaker attenuation level */
         reg_write(CS43L22_REG(0x25), 0x00);
     }

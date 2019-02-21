@@ -571,7 +571,8 @@ int rt_audio_codec_hw_init(void)
     /* register the device */
     rt_device_register(&audio->parent, "sound", RT_DEVICE_FLAG_WRONLY | RT_DEVICE_FLAG_DMA_TX);
 
-    cs43l22_init("i2c2", 1, 0x94>>1, cs43l22_output_headphone, 65); 
+    // cs43l22_init("i2c2", 1, 0x94>>1, cs43l22_output_speaker, 99);
+    cs43l22_init("i2c2", 1, 0x94>>1, cs43l22_output_headphone, 65);  
     sai_init(AUDIO_FREQUENCY_022K);
     HAL_SAI_Transmit_DMA(&sai.hsai, (uint8_t *)(audio->send_fifo), AUDIO_SEND_BUFFER_SIZE/2); 
     

@@ -13,6 +13,11 @@ int main(void)
     extern int kanime_init(void); 
     kanime_init(); 
 #endif 
+    
+#if defined(APP_ENABLE_KNETEASE) && defined(PKG_USING_PLAYER)
+    int knetease_init(void); 
+    knetease_init();
+#endif
 
     return 0; 
 }

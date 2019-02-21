@@ -40,7 +40,7 @@
 
 #define RT_USING_DEVICE
 #define RT_USING_CONSOLE
-#define RT_CONSOLEBUF_SIZE 4096
+#define RT_CONSOLEBUF_SIZE 10240
 #define RT_CONSOLE_DEVICE_NAME "uart3"
 #define RT_VER_NUM 0x40001
 #define ARCH_ARM
@@ -128,7 +128,6 @@
 /* protocol stack implement */
 
 #define SAL_USING_LWIP
-#define SAL_USING_TLS
 #define SAL_USING_POSIX
 #define SAL_PROTO_FAMILIES_NUM 4
 
@@ -217,15 +216,6 @@
 
 /* security packages */
 
-#define PKG_USING_MBEDTLS
-
-/* Select Root Certificate */
-
-#define PKG_USING_MBEDTLS_AMAZON_ROOT_CA
-#define MBEDTLS_AES_ROM_TABLES
-#define MBEDTLS_ECP_WINDOW_SIZE 2
-#define MBEDTLS_SSL_MAX_CONTENT_LEN 7200
-#define PKG_USING_MBEDTLS_V260
 
 /* language packages */
 
@@ -240,6 +230,8 @@
 
 
 /* peripheral libraries and drivers */
+
+/* sensors drivers */
 
 
 /* miscellaneous packages */
@@ -310,6 +302,6 @@
 
 /* Kanime: an anime music FM */
 
-#define APP_ENABLE_KANIME
+#include "rtconfig_project.h"
 
 #endif
